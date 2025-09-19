@@ -38,6 +38,7 @@ public class DriveBase {
         double x = gamepad1.left_stick_x;
         double r = gamepad1.right_stick_x;
 
+        //TODO: Check if this is right on our other drivebase.
         fLeft.setPower(y + x + r);
         bLeft.setPower(-y + x - r);
         fRight.setPower(y - x - r);

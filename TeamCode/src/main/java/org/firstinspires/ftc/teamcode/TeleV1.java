@@ -8,17 +8,14 @@ public class TeleV1 extends OpMode {
     DriveBase drive;
     FlywheelSystem shoot;
     DrumServo drum;
-    ActualIntake sCage;
-
-
-
+    SquirrelCage sCage;
 
     @Override
     public void init() {
         drive = new DriveBase(hardwareMap);
         shoot = new FlywheelSystem(hardwareMap);
         drum = new DrumServo(hardwareMap);
-        sCage = new ActualIntake(hardwareMap);
+        sCage = new SquirrelCage(hardwareMap);
     }
 
     @Override

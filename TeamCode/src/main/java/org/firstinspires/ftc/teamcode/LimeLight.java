@@ -13,6 +13,11 @@ public class LimeLight {
     public LimeLight(HardwareMap hardwareMap){
         limelight = hardwareMap.get(Limelight3A.class, "limelight");
     }
+
+    /**
+     * Dummy fucntion.
+     * @param telemetry
+     */
     public void limeSense(Telemetry telemetry){
         limelight.pipelineSwitch(0);
         LLResult llResult = limelight.getLatestResult();
