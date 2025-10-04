@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.autos;
 
 import com.qualcomm.hardware.limelightvision.LLResult;
 import com.qualcomm.hardware.limelightvision.LLResultTypes;
@@ -10,10 +10,8 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import java.util.List;
-
-
 @Autonomous
-public class AutoBlue extends LinearOpMode {
+public class AutoRed extends LinearOpMode {
     Limelight3A limelight;
     DcMotorEx flyRight;
     DcMotorEx flyLeft;
@@ -51,19 +49,20 @@ public class AutoBlue extends LinearOpMode {
         limelight.pipelineSwitch(0);
         timer = new ElapsedTime();
         if (opModeIsActive()){
+
             timer.reset();
             LLResult result = limelight.getLatestResult();
             if(result != null && result.isValid()){
                 List<LLResultTypes.FiducialResult> fiducials = result.getFiducialResults();
                 for(LLResultTypes.FiducialResult fiducial : fiducials) {
                     int id = fiducial.getFiducialId();
-                    if (id == 20) {
+                    if (id == 24){
                         timer.reset();
                         while (timer.seconds() < 0.0875){
-                            fRight.setPower(1);
-                            fLeft.setPower(1);
-                            bRight.setPower(1);
-                            bLeft.setPower(1);
+                            fRight.setPower(-1);
+                            fLeft.setPower(-1);
+                            bRight.setPower(-1);
+                            bLeft.setPower(-1);
                         }
                         fRight.setPower(0);
                         fLeft.setPower(0);
@@ -79,6 +78,13 @@ public class AutoBlue extends LinearOpMode {
                             wait(1);
                             drum.setTargetPosition(420);
                         }
+                        flyRight.setVelocity(-1);
+                        flyLeft.setVelocity(1);
+                        drum.setTargetPosition(140);
+                        wait(1);
+                        drum.setTargetPosition(280);
+                        wait(1);
+                        drum.setTargetPosition(420);
                     }
                     else if(id == 21){
                         telemetry.addLine("green, purple, purple");
@@ -89,7 +95,7 @@ public class AutoBlue extends LinearOpMode {
                     else if(id == 23){
                         telemetry.addLine("purple, purple, green");
                     }
-                    else if(id == 24){
+                    else if(id == 20){
                         telemetry.addLine("wrong goal");
                     }
                     else if(timer.seconds() < 0.25){

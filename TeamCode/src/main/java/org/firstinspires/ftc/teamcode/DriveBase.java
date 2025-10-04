@@ -38,10 +38,10 @@ public class DriveBase {
     }
     public void driveMecanum(Gamepad gamepad1){
         //tells how the gamepad makes it move
-        double y = -gamepad1.left_stick_y;
-        double x = gamepad1.left_stick_x;
-        double r = gamepad1.right_stick_x;
+        setPowers(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
+    }
 
+    public void setPowers(double y, double x, double r) {
         fLeft.setPower(-y - x - r);
         bLeft.setPower(-y + x - r);
         fRight.setPower(y - x - r);
