@@ -19,11 +19,11 @@ public class AutoBlue extends LinearOpMode {
     Limelight3A limelight;
     DcMotorEx flyRight;
     DcMotorEx flyLeft;
-
     DriveBase dB;
-
     ElapsedTime timer;
+    LLResult result;
     DcMotor drum;
+
     @Override
     public void runOpMode() throws InterruptedException {
         drum = hardwareMap.get(DcMotor.class, "drum");
@@ -40,7 +40,7 @@ public class AutoBlue extends LinearOpMode {
         timer = new ElapsedTime();
         if (opModeIsActive()){
             timer.reset();
-            LLResult result = limelight.getLatestResult();
+            result = limelight.getLatestResult();
             if(result != null && result.isValid()){
                 List<LLResultTypes.FiducialResult> fiducials = result.getFiducialResults();
                 for(LLResultTypes.FiducialResult fiducial : fiducials) {
