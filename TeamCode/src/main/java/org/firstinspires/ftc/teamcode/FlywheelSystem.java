@@ -19,23 +19,26 @@ public class FlywheelSystem {
         flyRight.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
     }
     public void flyShoot(Gamepad gamepad1, Telemetry telemetry){
+        //TODO WHY ARE THESE ZERO?
          double near = 0;
          double far = 0;
 
          if(gamepad1.x){
-             flyLeft.setVelocity(near);
-             flyRight.setVelocity(-near);
+             flyCon(near);
          }
          else if(gamepad1.y){
-             flyLeft.setVelocity(far);
-             flyRight.setVelocity(-far);
+             flyCon(far);
          }
          else {
-             flyLeft.setVelocity(0);
-             flyRight.setVelocity(0);
+             flyCon(0);
          }
 
 
         telemetry.addLine("firing artifact(s)");
+    }
+
+    public void flyCon (double velo) {
+        flyLeft.setVelocity(velo);
+        flyRight.setVelocity(-velo);
     }
 }

@@ -10,13 +10,13 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.DriveBase;
+import org.firstinspires.ftc.teamcode.FlywheelSystem;
 
 import java.util.List;
 @Autonomous
 public class AutoRed extends LinearOpMode {
     Limelight3A limelight;
-    DcMotorEx flyRight;
-    DcMotorEx flyLeft;
+    FlywheelSystem flywheels;
     DriveBase dB;
     LLResult result;
     ElapsedTime timer;
@@ -54,22 +54,13 @@ public class AutoRed extends LinearOpMode {
 
                             while (timer.seconds() < 3) {
                                 telemetry.addLine("Firing Artifacts");
-                                flyRight.setVelocity(-1);
-                                flyLeft.setVelocity(1);
+                                flywheels.flyCon(1);
                                 drum.setTargetPosition(140);
                                 wait(1);
                                 drum.setTargetPosition(280);
                                 wait(1);
                                 drum.setTargetPosition(420);
                             }
-
-                            flyRight.setVelocity(-1);
-                            flyLeft.setVelocity(1);
-                            drum.setTargetPosition(140);
-                            wait(1);
-                            drum.setTargetPosition(280);
-                            wait(1);
-                            drum.setTargetPosition(420);
                             break;
 
                         case 21:
