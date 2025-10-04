@@ -20,7 +20,7 @@ public class LimeLight {
         telemetry.setMsTransmissionInterval(11);
         limelight.start();
         limelight.pipelineSwitch(0);
-
+//TODO: OH NO
         while (linearOpMode.opModeIsActive()){
             LLResult result = limelight.getLatestResult();
             if(result != null && result.isValid()){

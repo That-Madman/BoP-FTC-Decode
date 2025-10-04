@@ -10,6 +10,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.DriveBase;
+import org.firstinspires.ftc.teamcode.DrumMotor;
 import org.firstinspires.ftc.teamcode.FlywheelSystem;
 
 import java.util.List;
@@ -22,14 +23,11 @@ public class AutoBlue extends LinearOpMode {
     DriveBase dB;
     ElapsedTime timer;
     LLResult result;
-    DcMotor drum;
+    DrumMotor drum;
 
     @Override
     public void runOpMode() throws InterruptedException {
-        drum = hardwareMap.get(DcMotor.class, "drum");
-        drum.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        drum.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        drum.setPower(0);
+        drum = new DrumMotor(hardwareMap, false);
 
         dB = new DriveBase(hardwareMap);
 
