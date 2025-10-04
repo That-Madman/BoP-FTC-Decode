@@ -4,15 +4,18 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-
 public class DriveBase {
+    //tells robot that those variables are DcMotors and tells it how treat that variable
     DcMotor fRight;
     DcMotor fLeft;
     DcMotor bLeft;
     DcMotor bRight;
-
     public DriveBase(HardwareMap hardwareMap) {
+        /*
+         basically tells the robot where the motors are,
+         the motors' names,
+         and how the motors should act
+         */
         fRight = hardwareMap.get(DcMotor.class, "frontRight");
         fRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         fRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -34,16 +37,14 @@ public class DriveBase {
         bLeft.setPower(0);
     }
     public void driveMecanum(Gamepad gamepad1){
+        //tells how the gamepad makes it move
         double y = -gamepad1.left_stick_y;
         double x = gamepad1.left_stick_x;
         double r = gamepad1.right_stick_x;
 
-        //TODO: Check if this is right on our other drivebase.
-        fLeft.setPower(y + x + r);
+        fLeft.setPower(-y - x - r);
         bLeft.setPower(-y + x - r);
         fRight.setPower(y - x - r);
         bRight.setPower(y + x - r);
-
     }
-
 }

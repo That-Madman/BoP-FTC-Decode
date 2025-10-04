@@ -1,28 +1,40 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class FlywheelSystem {
 
-    CRServo flyLeft;
-    CRServo flyRight;
+    DcMotorEx flyLeft;
+    DcMotorEx flyRight;
 
     public FlywheelSystem(HardwareMap hardwareMap){
-        flyLeft = hardwareMap.get(CRServo.class, "flyLeft");
-
-        flyRight = hardwareMap.get(CRServo.class, "flyRight");
-        flyRight.setPower(0);
+        flyLeft = hardwareMap.get(DcMotorEx.class, "flyLeft");
+        flyLeft.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        flyRight = hardwareMap.get(DcMotorEx.class, "flyRight");
+        flyRight.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
     }
     public void flyShoot(Gamepad gamepad1, Telemetry telemetry){
-        double s = gamepad1.right_trigger;
+         double near = 0;
+         double far = 0;
 
-        flyLeft.setPower(s);
-        flyRight.setPower(-s);
+         if(gamepad1.x){
+             flyLeft.setVelocity(near);
+             flyRight.setVelocity(-near);
+         }
+         else if(gamepad1.y){
+             flyLeft.setVelocity(far);
+             flyRight.setVelocity(-far);
+         }
+         else {
+             flyLeft.setVelocity(0);
+             flyRight.setVelocity(0);
+         }
+
 
         telemetry.addLine("firing artifact(s)");
     }

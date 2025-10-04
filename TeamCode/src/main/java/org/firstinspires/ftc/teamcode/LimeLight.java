@@ -1,40 +1,36 @@
 package org.firstinspires.ftc.teamcode;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.linearOpMode;
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
+
 import com.qualcomm.hardware.limelightvision.LLResult;
+import com.qualcomm.hardware.limelightvision.LLResultTypes;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.Telemetry;
+import java.util.List;
+
 
 public class LimeLight {
 
     Limelight3A limelight;
 
-    public LimeLight(HardwareMap hardwareMap){
+    public LimeLight(HardwareMap hardwareMap) {
         limelight = hardwareMap.get(Limelight3A.class, "limelight");
-    }
-
-    /**
-     * Dummy fucntion.
-     * @param telemetry
-     */
-    public void limeSense(Telemetry telemetry){
+        telemetry.setMsTransmissionInterval(11);
+        limelight.start();
         limelight.pipelineSwitch(0);
-        LLResult llResult = limelight.getLatestResult();
-        if (llResult != null && llResult.isValid()) {
-            telemetry.addData("Tx", llResult.getTx());
-            telemetry.addData("Ty", llResult.getTy());
-            telemetry.addData("Ta", llResult.getTa());
-        }
-        else{
-            limelight.pipelineSwitch(1);
-            }
-        if (llResult != null && llResult.isValid()){
-            telemetry.addData("Tx", llResult.getTx());
-            telemetry.addData("Ty", llResult.getTy());
-            telemetry.addData("Ta", llResult.getTa());
-            }
-        }
 
+        while (linearOpMode.opModeIsActive()){
+            LLResult result = limelight.getLatestResult();
+            if(result != null && result.isValid()){
+                List<LLResultTypes.FiducialResult> fiducials = result.getFiducialResults();
+                for (LLResultTypes.FiducialResult fiducial : fiducials) {
+                    int id = fiducial.getFiducialId();
+                    telemetry.addData("Fiducial ", id);
+
+                }
+            }
+        }
     }
-
+}
