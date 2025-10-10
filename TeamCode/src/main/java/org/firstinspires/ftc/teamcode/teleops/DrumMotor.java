@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.teleops;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
@@ -27,10 +27,16 @@ public class DrumMotor {
         }
     }
     public void drumSpin(Gamepad gamepad2){
-        double spin = gamepad2.right_trigger;
-        drum.setPower(spin);
+         if (gamepad2.left_bumper){
+             drum.setPower(-1);
+         }
+         else if(gamepad2.right_bumper){
+             drum.setPower(1);
+         }
+         else{
+             drum.setPower(0);
+         }
     }
-
     public void setTargetPosition(int pos) {
         drum.setTargetPosition(pos);
     }

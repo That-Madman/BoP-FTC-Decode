@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.teleops;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
@@ -13,8 +13,9 @@ public class SquirrelCage {
     }
     public void cageSpin(Gamepad gamepad2, Telemetry telemetry) {
         double g = gamepad2.left_trigger;
-        sCage.setPower(-g);
-        if (g > 0) {
+        double h = gamepad2.right_trigger;
+        sCage.setPower(-g+h);
+        if (g < 0) {
             telemetry.addLine("squirrel cage engaged");
         }
         else{
