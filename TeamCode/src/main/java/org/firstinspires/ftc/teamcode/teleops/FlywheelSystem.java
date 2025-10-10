@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.teleops;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
@@ -8,24 +9,24 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class FlywheelSystem {
 
-    private final DcMotor fly;
+    private final DcMotorEx fly;
 
     public FlywheelSystem(HardwareMap hardwareMap){
-        fly = hardwareMap.get(DcMotor.class, "fly wheels");
+        fly = hardwareMap.get(DcMotorEx.class, "fly wheels");
         fly.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public void flyShoot(Gamepad gamepad1, Telemetry telemetry){
-         double near = 0.625;
-         double far = 0.8825;
+         double near = 2000;
+         double far = 3000;
 
          if(gamepad1.x){
-             fly.setPower(near);
+             fly.setVelocity(near);
          }
          else if(gamepad1.y){
-             fly.setPower(far);
+             fly.setVelocity(far);
          }
          else {
-             fly.setPower(0);
+             fly.setVelocity(0);
          }
 
 
