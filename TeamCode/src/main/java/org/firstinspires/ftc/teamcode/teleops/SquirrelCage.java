@@ -14,7 +14,7 @@ public class SquirrelCage {
     public void cageSpin(Gamepad gamepad2, Telemetry telemetry) {
         double g = gamepad2.left_trigger;
         double h = gamepad2.right_trigger;
-        sCage.setPower(-g+h);
+        sCage.setPower(h - g);
         if (g < 0) {
             telemetry.addLine("squirrel cage engaged");
         }
