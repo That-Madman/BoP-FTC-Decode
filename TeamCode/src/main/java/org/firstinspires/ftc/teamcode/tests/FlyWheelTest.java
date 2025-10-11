@@ -1,8 +1,8 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-import org.firstinspires.ftc.teamcode.teleops.FlywheelSystem;
+import org.firstinspires.ftc.teamcode.resources.FlywheelSystem;
 
 public class FlyWheelTest extends OpMode {
     FlywheelSystem f;

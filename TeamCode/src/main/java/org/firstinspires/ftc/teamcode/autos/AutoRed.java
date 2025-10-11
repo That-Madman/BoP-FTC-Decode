@@ -7,9 +7,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.teleops.DriveBase;
-import org.firstinspires.ftc.teamcode.teleops.DrumMotor;
-import org.firstinspires.ftc.teamcode.teleops.FlywheelSystem;
+import org.firstinspires.ftc.teamcode.resources.DriveBase;
+import org.firstinspires.ftc.teamcode.resources.DrumMotor;
+import org.firstinspires.ftc.teamcode.resources.FlywheelSystem;
 
 import java.util.List;
 @Autonomous

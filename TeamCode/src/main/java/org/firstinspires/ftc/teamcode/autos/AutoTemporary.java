@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.autos;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.teleops.DriveBase;
+import org.firstinspires.ftc.teamcode.resources.DriveBase;
 
 @Autonomous
 public class AutoTemporary extends LinearOpMode {
