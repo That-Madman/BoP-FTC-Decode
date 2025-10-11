@@ -16,9 +16,8 @@ public class FlywheelSystem {
         fly.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public void flyShoot(Gamepad gamepad1, Telemetry telemetry){
-        //N.B. was 2000 and 3000, respectively
-         double near = 1500;
-         double far = 2500;
+         double near = 2000;
+         double far = 3000;
 
          if(gamepad1.x){
              fly.setVelocity(near);
