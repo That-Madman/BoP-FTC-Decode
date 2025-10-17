@@ -24,8 +24,8 @@ public class TeleV1 extends OpMode{
         @Override
         public void loop() {
             drive.driveMecanum(gamepad1);
-            drum.drumSpin(gamepad1);
-            sCage.cageSpin(gamepad1, telemetry);
+            drum.drumSpin(gamepad2);
+            sCage.cageSpin(gamepad2, telemetry);
             shoot.flyShoot(gamepad1, telemetry);
         }
     }
