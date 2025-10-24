@@ -4,7 +4,7 @@ import com.ftcteams.behaviortrees.DebugTree;
 import com.ftcteams.behaviortrees.Node;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-abstract public class QQNode extends Node {
+abstract public class BNode extends Node {
     @Override
     public State tick(DebugTree debug, Object obj) {
         return tick(debug, (OpMode)obj);
