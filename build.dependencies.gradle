@@ -1,6 +1,7 @@
 repositories {
     mavenCentral()
     maven {url 'https://jitpack.io'} //Let's us yank stuff from Github, like Trailblazer
+    maven {url 'https://maven.brott.dev'}
     google() // Needed for androidx
 }
 
@@ -17,5 +18,8 @@ dependencies {
 
     //For TrailBlazer
     implementation 'com.github.FOTMrobotics:TrailBlazer:-SNAPSHOT'
+
+    //For Behavior Trees
+    implementation 'com.ftcteams:behaviortrees:0.0.2'
 }
 
