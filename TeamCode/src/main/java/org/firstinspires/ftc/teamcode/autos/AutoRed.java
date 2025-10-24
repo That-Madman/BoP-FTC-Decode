@@ -10,13 +10,16 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.teamcode.resources.DriveBase;
 import org.firstinspires.ftc.teamcode.resources.DrumMotor;
 import org.firstinspires.ftc.teamcode.resources.FlywheelSystem;
+import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 
 import java.util.List;
+
+@Deprecated
 @Autonomous
 public class AutoRed extends LinearOpMode {
     Limelight3A limelight;
     FlywheelSystem flywheels;
-    DriveBase dB;
+    Drive dB;
     LLResult result;
     ElapsedTime timer;
     DrumMotor drum;
@@ -25,7 +28,7 @@ public class AutoRed extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         drum = new DrumMotor(hardwareMap, false);
 
-        dB = new DriveBase(hardwareMap);
+        dB = new Drive(hardwareMap);
 
         limelight = hardwareMap.get(Limelight3A.class, "limelight");
         telemetry.setMsTransmissionInterval(11);
@@ -43,10 +46,12 @@ public class AutoRed extends LinearOpMode {
                         case 24:
                             timer.reset();
                             while (timer.seconds() < 0.0875) {
-                                dB.setPowers(0, 0, 1);
+                                //dB.setPowers(0, 0, 1);
+                                dB.runMotors(new double[] {-1, -1, -1, -1});
                             }
 
-                            dB.setPowers(0, 0, 0);
+                            //dB.setPowers(0, 0, 0);
+                            dB.runMotors(new double[] {0, 0, 0, 0});
 
                             while (timer.seconds() < 3) {
                                 telemetry.addLine("Firing Artifacts");
@@ -77,7 +82,8 @@ public class AutoRed extends LinearOpMode {
 
                         default:
                             if (timer.seconds() < 0.25) {
-                                dB.setPowers(1, 0,0);
+                                //dB.setPowers(1, 0,0);
+                                dB.runMotors(new double[] {-1, -1, 1, 1});
                             } else {
                                 telemetry.addLine("Auto run complete, staying stationary for remainder");
                             }

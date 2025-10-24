@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+//TODO: CHECK IF EVERYTHING STILL RUNS RIGHT SO THIS CAN BE REMOVED
+@Deprecated
 public class DriveBase {
     //tells robot that those variables are DcMotors and tells it how treat that variable
     DcMotor fRight;
