@@ -4,6 +4,7 @@ import com.ftcteams.behaviortrees.DebugTree;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.BehaviorTrees.BTimeoutNode;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 
 public class Delay extends BTimeoutNode {
     public Delay(double seconds) {
@@ -11,7 +12,7 @@ public class Delay extends BTimeoutNode {
     }
 
     @Override
-    public State tick(DebugTree debug, OpMode opMode) {
+    public State tick(DebugTree debug, BoPMode opMode) {
         if (hasTimedOut()){
             return State.SUCCESS;
         }

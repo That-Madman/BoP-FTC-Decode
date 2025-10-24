@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.BehaviorTrees;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 abstract public class BTimeoutNode extends BNode {
-    ElapsedTime timer = new ElapsedTime();
+    ElapsedTime timer = new ElapsedTime(); //TODO: Optimize this somehow
     public double seconds;
     boolean isTimerStarted;
 
