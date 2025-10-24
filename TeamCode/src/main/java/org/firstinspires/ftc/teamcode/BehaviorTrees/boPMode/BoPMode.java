@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode;
 
+import com.ftcteams.behaviortrees.DebugTree;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -12,11 +13,13 @@ import java.util.Timer;
 abstract public class BoPMode extends OpMode {
     BoPModeHWSuite hwSuite;
     ElapsedTime timer;
+    DebugTree debugTree;
 
     @Override
     public void init() {
         hwSuite = new BoPModeHWSuite(hardwareMap);
         timer = new ElapsedTime();
+        debugTree = new DebugTree();
 
         locInit();
     }

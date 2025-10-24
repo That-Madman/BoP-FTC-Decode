@@ -1,14 +1,14 @@
 package org.firstinspires.ftc.teamcode.BehaviorTrees.Actions;
 
 import com.ftcteams.behaviortrees.DebugTree;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.BehaviorTrees.BTimeoutNode;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 
 public class Delay extends BTimeoutNode {
-    public Delay(double seconds) {
-        super(seconds);
+    public Delay(double seconds, ElapsedTime timer) {
+        super(seconds, timer);
     }
 
     @Override
