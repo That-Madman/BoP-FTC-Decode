@@ -7,23 +7,24 @@ import org.firstinspires.ftc.teamcode.resources.DriveBase;
 import org.firstinspires.ftc.teamcode.resources.DrumMotor;
 import org.firstinspires.ftc.teamcode.resources.FlywheelSystem;
 import org.firstinspires.ftc.teamcode.resources.SquirrelCage;
+import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 
 @TeleOp
 public class TeleV1For1 extends OpMode{
-        DriveBase drive;
+        Drive drive;
         DrumMotor drum;
         SquirrelCage sCage;
         FlywheelSystem shoot;
         @Override
         public void init() {
-            drive = new DriveBase(hardwareMap);
+            drive = new Drive(hardwareMap);
             drum = new DrumMotor(hardwareMap);
             sCage = new SquirrelCage(hardwareMap);
             shoot = new FlywheelSystem(hardwareMap);
         }
         @Override
         public void loop() {
-            drive.driveMecanum(gamepad1);
+            drive.trueNorthDrive(gamepad1);
             drum.drumSpin(gamepad1);
             sCage.cageSpin(gamepad1, telemetry);
             shoot.flyShoot(gamepad1, telemetry);
