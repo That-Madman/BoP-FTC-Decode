@@ -9,24 +9,31 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class FlywheelSystem {
 
-    private final DcMotorEx fly;
+    private final DcMotorEx fly1;
+    private final DcMotorEx fly2;
+
 
     public FlywheelSystem(HardwareMap hardwareMap){
-        fly = hardwareMap.get(DcMotorEx.class, "fly wheels");
-        fly.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        fly1 = hardwareMap.get(DcMotorEx.class, "fly motor right");
+        fly1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        fly2 = hardwareMap.get(DcMotorEx.class, "fly motor left");
+        fly2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public void flyShoot(Gamepad gamepad1, Telemetry telemetry){
          double near = 2000;
          double far = 3000;
 
          if(gamepad1.x){
-             fly.setVelocity(near);
+             fly1.setVelocity(near);
+             fly2.setVelocity(near);
          }
          else if(gamepad1.y){
-             fly.setVelocity(far);
+             fly1.setVelocity(far);
+             fly2.setVelocity(far);
          }
          else {
-             fly.setVelocity(0);
+             fly1.setVelocity(0);
+             fly2.setVelocity(0);
          }
 
 
@@ -34,6 +41,6 @@ public class FlywheelSystem {
     }
 
     public void flyCon (double velo) {
-        fly.setPower(velo);
+        fly1.setPower(velo);
     }
 }
