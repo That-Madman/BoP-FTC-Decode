@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class SquirrelCage {
-    DcMotor sCage;
+    private final DcMotor sCage;
     public SquirrelCage(HardwareMap hardwareMap) {
         sCage = hardwareMap.get(DcMotor.class, "squirrelCage");
         sCage.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
