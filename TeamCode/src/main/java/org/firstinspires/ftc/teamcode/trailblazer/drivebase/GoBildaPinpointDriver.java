@@ -34,8 +34,8 @@ import com.qualcomm.robotcore.util.TypeConversion;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.Pose2D;
 import org.firstinspires.ftc.robotcore.external.navigation.UnnormalizedAngleUnit;
+import org.fotmrobotics.trailblazer.Pose2D;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -466,10 +466,10 @@ public class GoBildaPinpointDriver extends I2cDeviceSynchDevice<I2cDeviceSynchSi
      * relative to that new, more accurate position.
      * @param pos a Pose2D describing the robot's new position.
      */
-    public Pose2D setPosition(Pose2D pos){
-        writeByteArray(Register.X_POSITION,(floatToByteArray((float) pos.getX(DistanceUnit.MM), ByteOrder.LITTLE_ENDIAN)));
-        writeByteArray(Register.Y_POSITION,(floatToByteArray((float) pos.getY(DistanceUnit.MM),ByteOrder.LITTLE_ENDIAN)));
-        writeByteArray(Register.H_ORIENTATION,(floatToByteArray((float) pos.getHeading(AngleUnit.RADIANS),ByteOrder.LITTLE_ENDIAN)));
+    public Pose2D setPosition(Pose2D pos, DistanceUnit lenUnit, AngleUnit angleUnit){
+        writeByteArray(Register.X_POSITION,(floatToByteArray((float) lenUnit.toMm(pos.getX()), ByteOrder.LITTLE_ENDIAN)));
+        writeByteArray(Register.Y_POSITION,(floatToByteArray((float) lenUnit.toMm(pos.getY()),ByteOrder.LITTLE_ENDIAN)));
+        writeByteArray(Register.H_ORIENTATION,(floatToByteArray((float) angleUnit.toRadians(pos.getH()),ByteOrder.LITTLE_ENDIAN)));
         return pos;
     }
 
@@ -641,12 +641,11 @@ public class GoBildaPinpointDriver extends I2cDeviceSynchDevice<I2cDeviceSynchSi
     /**
      * @return a Pose2D containing the estimated position of the robot
      */
-    public Pose2D getPosition() {
-        return new Pose2D(DistanceUnit.MM,
-                xPosition,
-                yPosition,
-                AngleUnit.RADIANS,
-                //this wraps the hOrientation variable from -180° to +180°
-                ((hOrientation + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI);
+    public Pose2D getPosition(DistanceUnit lenUnit, AngleUnit angleUnit) {
+        return new Pose2D(
+                lenUnit.fromMm(xPosition),
+                lenUnit.fromMm(yPosition),
+                angleUnit.fromRadians(((hOrientation + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI)
+        );
     }
 }
