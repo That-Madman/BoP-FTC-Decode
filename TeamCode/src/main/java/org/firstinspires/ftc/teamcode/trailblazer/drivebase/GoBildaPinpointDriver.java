@@ -361,20 +361,6 @@ public class GoBildaPinpointDriver extends I2cDeviceSynchDevice<I2cDeviceSynchSi
     /**
      * Sets the odometry pod positions relative to the point that the odometry computer tracks around.<br><br>
      * The most common tracking position is the center of the robot. <br> <br>
-     * The X pod offset refers to how far sideways (in mm) from the tracking point the X (forward) odometry pod is. Left of the center is a positive number, right of center is a negative number. <br>
-     * the Y pod offset refers to how far forwards (in mm) from the tracking point the Y (strafe) odometry pod is. forward of center is a positive number, backwards is a negative number.<br>
-     * @param xOffset how sideways from the center of the robot is the X (forward) pod? Left increases
-     * @param yOffset how far forward from the center of the robot is the Y (Strafe) pod? forward increases
-     * @deprecated The overflow for this function has a DistanceUnit, which can reduce the chance of unit confusion.
-     */
-    public void setOffsets(double xOffset, double yOffset){
-        writeFloat(Register.X_POD_OFFSET, (float) xOffset);
-        writeFloat(Register.Y_POD_OFFSET, (float) yOffset);
-    }
-
-    /**
-     * Sets the odometry pod positions relative to the point that the odometry computer tracks around.<br><br>
-     * The most common tracking position is the center of the robot. <br> <br>
      * The X pod offset refers to how far sideways from the tracking point the X (forward) odometry pod is. Left of the center is a positive number, right of center is a negative number. <br>
      * the Y pod offset refers to how far forwards from the tracking point the Y (strafe) odometry pod is. forward of center is a positive number, backwards is a negative number.<br>
      * @param xOffset how sideways from the center of the robot is the X (forward) pod? Left increases
@@ -432,16 +418,6 @@ public class GoBildaPinpointDriver extends I2cDeviceSynchDevice<I2cDeviceSynchSi
         if (pods == GoBildaOdometryPods.goBILDA_4_BAR_POD){
             writeByteArray(Register.MM_PER_TICK,(floatToByteArray(goBILDA_4_BAR_POD, ByteOrder.LITTLE_ENDIAN)));
         }
-    }
-
-    /**
-     * Sets the encoder resolution in ticks per mm of the odometry pods. <br>
-     * You can find this number by dividing the counts-per-revolution of your encoder by the circumference of the wheel.
-     * @param ticks_per_mm should be somewhere between 10 ticks/mm and 100 ticks/mm a goBILDA Swingarm pod is ~13.26291192
-     * @deprecated The overflow for this function has a DistanceUnit, which can reduce the chance of unit confusion.
-     */
-    public void setEncoderResolution(double ticks_per_mm){
-        writeByteArray(Register.MM_PER_TICK,(floatToByteArray((float) ticks_per_mm,ByteOrder.LITTLE_ENDIAN)));
     }
 
     /**
@@ -593,14 +569,6 @@ public class GoBildaPinpointDriver extends I2cDeviceSynchDevice<I2cDeviceSynchSi
     public int getEncoderY(){return yEncoderValue; }
 
     /**
-     * @return the estimated X (forward) position of the robot in mm
-     * @deprecated The overflow for this function has a DistanceUnit, which can reduce the chance of unit confusion.
-     */
-    public double getPosX(){
-        return xPosition;
-    }
-
-    /**
      * @return the estimated X (forward) position of the robot in specified unit
      * @param distanceUnit the unit that the estimated position will return in
      */
@@ -609,28 +577,11 @@ public class GoBildaPinpointDriver extends I2cDeviceSynchDevice<I2cDeviceSynchSi
     }
 
     /**
-     * @return the estimated Y (Strafe) position of the robot in mm
-     * @deprecated The overflow for this function has a DistanceUnit, which can reduce the chance of unit confusion.
-     */
-    public double getPosY(){
-        return yPosition;
-    }
-
-    /**
      * @return the estimated Y (Strafe) position of the robot in specified unit
      * @param distanceUnit the unit that the estimated position will return in
      */
     public double getPosY(DistanceUnit distanceUnit){
         return distanceUnit.fromMm(yPosition);
-    }
-
-    /**
-     * @return the unnormalized estimated H (heading) position of the robot in radians
-     * unnormalized heading is not constrained from -180° to 180°. It will continue counting multiple rotations.
-     * @deprecated two overflows for this function exist with AngleUnit parameter. These minimize the possibility of unit confusion.
-     */
-    public double getHeading(){
-        return hOrientation;
     }
 
     /**
@@ -651,14 +602,6 @@ public class GoBildaPinpointDriver extends I2cDeviceSynchDevice<I2cDeviceSynchSi
     }
 
     /**
-     * @return the estimated X (forward) velocity of the robot in mm/sec
-     * @deprecated The overflow for this function has a DistanceUnit, which can reduce the chance of unit confusion.
-     */
-    public double getVelX(){
-        return xVelocity;
-    }
-
-    /**
      * @return the estimated X (forward) velocity of the robot in specified unit/sec
      */
     public double getVelX(DistanceUnit distanceUnit){
@@ -666,26 +609,10 @@ public class GoBildaPinpointDriver extends I2cDeviceSynchDevice<I2cDeviceSynchSi
     }
 
     /**
-     * @return the estimated Y (strafe) velocity of the robot in mm/sec
-     * @deprecated The overflow for this function has a DistanceUnit, which can reduce the chance of unit confusion.
-     */
-    public double getVelY(){
-        return yVelocity;
-    }
-
-    /**
      * @return the estimated Y (strafe) velocity of the robot in specified unit/sec
      */
     public double getVelY(DistanceUnit distanceUnit){
         return distanceUnit.fromMm(yVelocity);
-    }
-
-    /**
-     * @return the estimated H (heading) velocity of the robot in radians/sec
-     * @deprecated The overflow for this function has an AngleUnit, which can reduce the chance of unit confusion.
-     */
-    public double getHeadingVelocity() {
-        return hVelocity;
     }
 
     /**
@@ -714,25 +641,12 @@ public class GoBildaPinpointDriver extends I2cDeviceSynchDevice<I2cDeviceSynchSi
     /**
      * @return a Pose2D containing the estimated position of the robot
      */
-    public Pose2D getPosition(){
+    public Pose2D getPosition() {
         return new Pose2D(DistanceUnit.MM,
                 xPosition,
                 yPosition,
                 AngleUnit.RADIANS,
                 //this wraps the hOrientation variable from -180° to +180°
                 ((hOrientation + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI);
-    }
-
-    /**
-     * @deprecated This function is not recommended, as velocity is wrapped from -180° to 180°.
-     * instead use individual getters.
-     * @return a Pose2D containing the estimated velocity of the robot, velocity is unit per second
-     */
-    public Pose2D getVelocity(){
-        return new Pose2D(DistanceUnit.MM,
-                xVelocity,
-                yVelocity,
-                AngleUnit.RADIANS,
-                ((hVelocity + Math.PI) % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI) - Math.PI);
     }
 }
