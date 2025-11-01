@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
  * A localized place to hold all of our hardware for Behvavior tree programs.
  * It should be updated whenever a new subsystem is added.
  */
-public class BoPModeHWSuite {
+public class BoPModeHWSuite { //TODO: KEEP UPDATED
     Drive drive;
     DrumMotor drum;
     FlywheelSystem flyWheel;
