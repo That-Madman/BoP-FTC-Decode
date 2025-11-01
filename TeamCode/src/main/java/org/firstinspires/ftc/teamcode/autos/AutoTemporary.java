@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.autos;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.resources.DriveBase;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 
 @Deprecated
