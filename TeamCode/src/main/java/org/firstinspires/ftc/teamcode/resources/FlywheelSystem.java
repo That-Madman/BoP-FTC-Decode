@@ -42,5 +42,6 @@ public class FlywheelSystem {
 
     public void flyCon (double velo) {
         fly1.setPower(velo);
+        fly2.setPower(velo);
     }
 }
