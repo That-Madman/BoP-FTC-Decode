@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import java.util.List;
 
-
+@Deprecated
 public class LimeLight {
 
     Limelight3A limelight;
