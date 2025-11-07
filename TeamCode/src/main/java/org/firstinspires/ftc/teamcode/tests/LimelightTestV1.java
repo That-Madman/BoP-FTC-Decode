@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.resources.ColorLimelight;
 
 @TeleOp
+@Deprecated
 public class LimelightTestV1 extends OpMode {
 
     ColorLimelight color;
