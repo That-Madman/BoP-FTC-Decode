@@ -54,7 +54,7 @@ public class Limelight {
         limelight.updateRobotOrientation(drive.odometry.getPosition().getH());
         updateVis();
 
-        if (lastResult != null && lastResult.isValid() &&lastResult.getBotpose_MT2()!= null) {
+        if (lastResult != null && lastResult.isValid() && lastResult.getBotpose_MT2()!= null) {
                 return new Pose2D(
                         //X
                         drive.driveValues.linearUnit.fromUnit(
