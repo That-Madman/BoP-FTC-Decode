@@ -19,6 +19,6 @@ public class TestLimelight extends OpMode {
 
     @Override
     public void loop() {
-        telemetry.addData("Read position", l.megaTag().toString());
+        telemetry.addData("Read position", (l.megaTag() != null) ? l.megaTag().toString() : "Not found");
     }
 }
