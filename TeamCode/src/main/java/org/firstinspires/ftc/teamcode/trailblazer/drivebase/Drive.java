@@ -25,7 +25,7 @@ public class Drive {
     HardwareMap hardwareMap;
     public Odometry odometry;
 
-    DriveValues driveValues = new DriveValues();
+    public DriveValues driveValues = new DriveValues();
 
     public double xScale = driveValues.xScale;
     public double yScale = driveValues.yScale;

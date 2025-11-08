@@ -41,8 +41,8 @@ public class DriveValues {
     Pose2D offset = new Pose2D(0,0, 0);
 
     // Units
-    DistanceUnit linearUnit = DistanceUnit.INCH;
-    AngleUnit angularUnit = AngleUnit.DEGREES;
+    public DistanceUnit linearUnit = DistanceUnit.INCH;
+    public AngleUnit angularUnit = AngleUnit.DEGREES;
 
     // TODO: Tune the linear and angular scalar.
 
