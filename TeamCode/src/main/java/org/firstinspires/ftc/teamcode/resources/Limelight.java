@@ -53,22 +53,25 @@ public class Limelight {
     public Pose2D megaTag () {
         limelight.updateRobotOrientation(drive.odometry.getPosition().getH());
         updateVis();
+        return megaTag_base();
+    }
 
+    public Pose2D megaTag_base () {
         if (lastResult != null && lastResult.isValid() && lastResult.getBotpose_MT2()!= null) {
-                return new Pose2D(
-                        //X
-                        drive.driveValues.linearUnit.fromUnit(
-                                lastResult.getBotpose_MT2().getPosition().unit,
-                                lastResult.getBotpose_MT2().getPosition().x),
+            return new Pose2D(
+                    //X
+                    drive.driveValues.linearUnit.fromUnit(
+                            lastResult.getBotpose_MT2().getPosition().unit,
+                            lastResult.getBotpose_MT2().getPosition().x),
 
-                        //Y
-                        drive.driveValues.linearUnit.fromUnit(
-                                lastResult.getBotpose_MT2().getPosition().unit,
-                                lastResult.getBotpose_MT2().getPosition().y),
+                    //Y
+                    drive.driveValues.linearUnit.fromUnit(
+                            lastResult.getBotpose_MT2().getPosition().unit,
+                            lastResult.getBotpose_MT2().getPosition().y),
 
-                        //Theta
-                        lastResult.getBotpose_MT2().getOrientation().getYaw(drive.driveValues.angularUnit)
-                        );
+                    //Theta
+                    lastResult.getBotpose_MT2().getOrientation().getYaw(drive.driveValues.angularUnit)
+            );
         }
 
         return null;

@@ -8,10 +8,10 @@ import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 import org.fotmrobotics.trailblazer.Pose2D;
 
 @TeleOp(group = "Tests")
-public class TestLimelight extends OpMode {
+public class TestPositioning extends OpMode {
     Limelight l;
     Drive drive;
-    Pose2D p;
+    Pose2D p_b, p;
 
     @Override
     public void init() {
@@ -21,7 +21,10 @@ public class TestLimelight extends OpMode {
 
     @Override
     public void loop() {
+        p_b = l.megaTag_base();
         p = l.megaTag();
-        telemetry.addData("Read position", (p != null) ? p.toString() : "Not found");
+        telemetry.addData("Odom pos:", drive.odometry.getLastPosition());
+        telemetry.addData("Read position (without odom)", (p_b != null) ? p_b.toString() : "Not found");
+        telemetry.addData("Read position (with odom)", (p != null) ? p.toString() : "Not found");
     }
 }
