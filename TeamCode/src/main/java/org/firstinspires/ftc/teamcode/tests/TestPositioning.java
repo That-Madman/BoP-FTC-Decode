@@ -24,7 +24,11 @@ public class TestPositioning extends OpMode {
         p_b = l.megaTag_base();
         p = l.megaTag();
         telemetry.addData("Odom pos:", drive.odometry.getLastPosition());
-        telemetry.addData("Read position (without odom)", (p_b != null) ? p_b.toString() : "Not found");
-        telemetry.addData("Read position (with odom)", (p != null) ? p.toString() : "Not found");
+        telemetry.addData(
+                "Limelight position (without odom)",
+                (p_b != null) ? p_b.toString() : "Not found");
+        telemetry.addData(
+                "Limelight position (with odom)",
+                (p != null) ? p.toString() : "Not found");
     }
 }
