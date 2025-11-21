@@ -18,7 +18,7 @@ public class TestGoBildaPinpointDriver extends OpMode {
 
         pin.setOffsets(4,0,DistanceUnit.MM);
         pin.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
-        pin.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.FORWARD, GoBildaPinpointDriver.EncoderDirection.FORWARD);
+        pin.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED, GoBildaPinpointDriver.EncoderDirection.REVERSED);
         pin.resetPosAndIMU();
 
         telemetry.addLine("Odom tuned and ready");
