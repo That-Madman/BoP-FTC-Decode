@@ -7,14 +7,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.GoBildaPinpointDriver;
 
-@TeleOp(name = "Tests")
+@TeleOp(group = "Tests")
 public class TestGoBildaPinpointDriver extends OpMode {
 
     GoBildaPinpointDriver pin;
 
     @Override
     public void init() {
-        pin = hardwareMap.get(GoBildaPinpointDriver.class, "pinpoint");
+        pin = hardwareMap.get(GoBildaPinpointDriver.class, "odo");
 
         pin.setOffsets(4,0,DistanceUnit.MM);
         pin.setEncoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD);
