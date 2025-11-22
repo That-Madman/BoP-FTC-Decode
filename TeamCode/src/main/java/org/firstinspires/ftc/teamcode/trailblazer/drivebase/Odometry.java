@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.trailblazer.drivebase;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.fotmrobotics.trailblazer.MathKt;
 import org.fotmrobotics.trailblazer.Pose2D;
 

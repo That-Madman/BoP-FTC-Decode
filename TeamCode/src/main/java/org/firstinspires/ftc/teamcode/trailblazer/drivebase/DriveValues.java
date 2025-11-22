@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.trailblazer.drivebase;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.fotmrobotics.trailblazer.PIDF;
-import org.fotmrobotics.trailblazer.Pose2D;
 import org.fotmrobotics.trailblazer.Vector2D;
 
 /**
@@ -27,7 +26,11 @@ public class DriveValues {
     };
 
     // TODO: Reverse motors if necessary.
-    int[] reverseMotors = {};
+    int[] reverseMotors = {
+            1,
+            2,
+            3
+    };
 
     GoBildaPinpointDriver.EncoderDirection[]  odoDir = {
             GoBildaPinpointDriver.EncoderDirection.REVERSED,
