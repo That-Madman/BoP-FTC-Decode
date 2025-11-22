@@ -15,7 +15,7 @@ public class TestOdom extends OpMode {
 
     @Override
     public void loop() {
-        drive.mecanumDrive(gamepad1);
+        drive.mecanumBasic(gamepad1);
         telemetry.addData("position", drive.odometry.getPosition());
     }
 }

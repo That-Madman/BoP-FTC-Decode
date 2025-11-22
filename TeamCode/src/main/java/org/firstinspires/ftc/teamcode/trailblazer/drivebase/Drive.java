@@ -179,6 +179,20 @@ public class Drive {
         if (!rotate) {moveVector(new Pose2D(x, y, targetDriveHeading));}
     }
 
+    public void mecanumBasic (Gamepad gamepad) {
+        double x = gamepad.left_stick_x;
+        double y = -gamepad.left_stick_y;
+        double r = gamepad.right_stick_x;
+
+        runMotors(new double [] {
+                y + x + r,
+                y - x - r,
+                y - x + r,
+                y + x - r
+        });
+
+    }
+
     public PathBuilder PathBuilder(Vector2D startPoint) {
         return new PathBuilder(this, startPoint);
     }
