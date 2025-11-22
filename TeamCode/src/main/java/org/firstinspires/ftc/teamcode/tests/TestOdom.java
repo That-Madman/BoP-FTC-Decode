@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
-@TeleOp
+@TeleOp(group = "Tests")
 public class TestOdom extends OpMode {
     Drive drive;
     @Override

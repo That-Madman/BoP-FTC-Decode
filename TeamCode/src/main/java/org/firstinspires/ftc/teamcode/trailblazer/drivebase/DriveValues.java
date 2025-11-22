@@ -47,11 +47,11 @@ public class DriveValues{
 
     // TODO: Change if necessary.
     // Position of the GoBildaPinpointDriver relative to the center.
-    Vector2D offset = new Vector2D(0,0);
+    Vector2D offset = new Vector2D(4,0);
     DistanceUnit offsetUnit = DistanceUnit.MM;
 
     // Units
-    public DistanceUnit linearUnit = DistanceUnit.INCH;
+    public DistanceUnit linearUnit = DistanceUnit.MM;
     public AngleUnit angularUnit = AngleUnit.DEGREES;
 
     //Type of odom pod used
