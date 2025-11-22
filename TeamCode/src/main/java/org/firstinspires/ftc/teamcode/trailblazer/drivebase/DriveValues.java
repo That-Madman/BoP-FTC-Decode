@@ -51,7 +51,7 @@ public class DriveValues{
     DistanceUnit offsetUnit = DistanceUnit.MM;
 
     // Units
-    public DistanceUnit linearUnit = DistanceUnit.MM;
+    public DistanceUnit linearUnit = DistanceUnit.INCH;
     public AngleUnit angularUnit = AngleUnit.DEGREES;
 
     //Type of odom pod used

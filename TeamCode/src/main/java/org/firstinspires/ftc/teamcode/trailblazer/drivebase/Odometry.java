@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.trailblazer.drivebase;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.fotmrobotics.trailblazer.MathKt;
 import org.fotmrobotics.trailblazer.Pose2D;
 
@@ -15,7 +16,7 @@ import org.fotmrobotics.trailblazer.Pose2D;
 public class Odometry {
     DriveValues driveValues = new DriveValues();
 
-    private GoBildaPinpointDriver odo;
+    private final GoBildaPinpointDriver odo;
 
     Pose2D currentPos;
     Pose2D lastPos;
@@ -39,8 +40,11 @@ public class Odometry {
         lastPos = currentPos;
         odo.update();
 
-        Pose2D pos = odo.getPosition(driveValues.linearUnit, driveValues.angularUnit);
-        pos.setH(MathKt.angleWrap(pos.getH()));
+        Pose2D pos = odo.getPosition(DistanceUnit.MM, AngleUnit.DEGREES);
+        pos.setH(driveValues.angularUnit.fromUnit(AngleUnit.DEGREES, MathKt.angleWrap(pos.getH())));
+
+        pos.setX(driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getX()));
+        pos.setY(driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getY()));
 
         currentPos = pos;
     }
