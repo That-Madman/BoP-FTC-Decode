@@ -8,15 +8,15 @@ import org.fotmrobotics.trailblazer.Vector2D;
 /**
  * Edit all components here.
  */
-public class DriveValues {
-    // TODO: Change if necessary.
+public class DriveValues{
     /*
     Name of the motors in the configuration
-
+    Control Hub:
     0. Front Left
     1. Front Right
-    2. Back Left
-    3. Back Right
+    Expansion Hub
+    TBD Back Left
+    TBD Back Right
     */
     String[] motorNames = {
             "frontLeft",
