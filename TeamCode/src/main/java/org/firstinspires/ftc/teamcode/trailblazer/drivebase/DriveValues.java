@@ -39,7 +39,7 @@ public class DriveValues{
 
     // TODO: Tune the PIDF loops.
     PIDF positionPID = new PIDF(1, 0,0,0);
-    PIDF headingPID = new PIDF(1, 0,0,0);
+    PIDF headingPID = new PIDF(0, 0,0,0);
 
     // TODO: Change if necessary.
     // Name of the SparkFunOTOS in the configuration.

@@ -46,7 +46,7 @@ public class Odometry {
         pos.setX(driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getX()));
         pos.setY(driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getY()));
 
-        currentPos = pos;
+        currentPos = new Pose2D(pos.getY(), pos.getX(), pos.getH());
     }
 
     public Pose2D getPosition() {
