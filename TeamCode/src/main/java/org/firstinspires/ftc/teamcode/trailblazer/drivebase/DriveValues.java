@@ -34,16 +34,12 @@ public class DriveValues{
 
     GoBildaPinpointDriver.EncoderDirection[]  odoDir = {
             GoBildaPinpointDriver.EncoderDirection.REVERSED,
-            GoBildaPinpointDriver.EncoderDirection.REVERSED
+            GoBildaPinpointDriver.EncoderDirection.FORWARD
     };
 
     // TODO: Tune the PIDF loops.
-    PIDF positionPID = new PIDF(1, 0,0,0);
+    PIDF positionPID = new PIDF(0.06, 0,0.05,0);
     PIDF headingPID = new PIDF(0, 0,0,0);
-
-    // TODO: Change if necessary.
-    // Name of the SparkFunOTOS in the configuration.
-    String SparkFunOTOS = "otos";
 
     // TODO: Change if necessary.
     // Position of the GoBildaPinpointDriver relative to the center.

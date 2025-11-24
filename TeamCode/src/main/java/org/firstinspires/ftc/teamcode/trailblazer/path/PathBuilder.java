@@ -31,6 +31,10 @@ public class PathBuilder {
     public PathBuilder(Drive drive, Vector2D start) {
         this.path = new Path();
         this.drive = drive;
+
+        if (start.getX() == 0) start.setX(Double.MIN_VALUE);
+        if (start.getY() == 0) start.setY(Double.MIN_VALUE);
+
         spline.addPt(start);
         spline.addPt(start);
         ++n;

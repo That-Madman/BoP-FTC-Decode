@@ -85,7 +85,7 @@ public class Drive {
         double x = Math.cos(Math.toRadians(angle)) * power;
         double y = Math.sin(Math.toRadians(angle)) * power;
 
-        runMotors(getPowers(x, y, r));
+        runMotors(getPowers(y, x, r));
     }
 
     public void moveVector(Pose2D pose, boolean relative) {
@@ -180,8 +180,8 @@ public class Drive {
     }
 
     public void mecanumBasic (Gamepad gamepad) {
-        double x = gamepad.left_stick_x;
-        double y = -gamepad.left_stick_y;
+        double x = -gamepad.left_stick_x;
+        double y = gamepad.left_stick_y;
         double r = gamepad.right_stick_x;
 
         runMotors(new double [] {

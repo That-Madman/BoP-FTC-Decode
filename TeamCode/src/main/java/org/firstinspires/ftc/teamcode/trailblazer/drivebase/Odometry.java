@@ -41,12 +41,19 @@ public class Odometry {
         odo.update();
 
         Pose2D pos = odo.getPosition(DistanceUnit.MM, AngleUnit.DEGREES);
-        pos.setH(driveValues.angularUnit.fromUnit(AngleUnit.DEGREES, MathKt.angleWrap(pos.getH())));
 
-        pos.setX(driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getX()));
-        pos.setY(driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getY()));
-
-        currentPos = new Pose2D(pos.getY(), pos.getX(), pos.getH());
+        //X and Y are inverted
+//        currentPos = new Pose2D(
+//                driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getY()),
+//                driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getX()),
+//                driveValues.angularUnit.fromUnit(AngleUnit.DEGREES, MathKt.angleWrap(pos.getH() + 90))
+//                );
+//
+        currentPos = new Pose2D(
+                driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getX()),
+                driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getY()),
+                driveValues.angularUnit.fromUnit(AngleUnit.DEGREES, MathKt.angleWrap(pos.getH()))
+        );
     }
 
     public Pose2D getPosition() {
