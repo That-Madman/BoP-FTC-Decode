@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.trailblazer.drivebase;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.fotmrobotics.trailblazer.PIDF;
 import org.fotmrobotics.trailblazer.Vector2D;
@@ -34,7 +35,7 @@ public class DriveValues{
 
     GoBildaPinpointDriver.EncoderDirection[]  odoDir = {
             GoBildaPinpointDriver.EncoderDirection.REVERSED,
-            GoBildaPinpointDriver.EncoderDirection.FORWARD
+            GoBildaPinpointDriver.EncoderDirection.REVERSED
     };
 
     // TODO: Tune the PIDF loops.

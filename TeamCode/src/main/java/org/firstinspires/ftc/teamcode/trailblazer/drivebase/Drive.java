@@ -85,7 +85,7 @@ public class Drive {
         double x = Math.cos(Math.toRadians(angle)) * power;
         double y = Math.sin(Math.toRadians(angle)) * power;
 
-        runMotors(getPowers(y, x, r));
+        runMotors(getPowers(-y, x, r));
     }
 
     public void moveVector(Pose2D pose, boolean relative) {

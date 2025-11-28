@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.fotmrobotics.trailblazer.MathKt;
 import org.fotmrobotics.trailblazer.Pose2D;
+import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 
 /**
  * Controls the odometry. Currently supports the SparkFunOTOS and Gobuilda Odom Computers.
@@ -31,6 +31,11 @@ public class Odometry {
         odo.setEncoderResolution(driveValues.podType);
 
         odo.resetPosAndIMU();
+
+        currentPos = new Pose2D(0,0,0);
+
+        odo.setPosition(new org.firstinspires.ftc.robotcore.external.navigation.Pose2D(
+                DistanceUnit.MM, 0,0,AngleUnit.RADIANS, 0));
     }
 
     /**
@@ -40,20 +45,9 @@ public class Odometry {
         lastPos = currentPos;
         odo.update();
 
-        Pose2D pos = odo.getPosition(DistanceUnit.MM, AngleUnit.DEGREES);
-
-        //X and Y are inverted
-//        currentPos = new Pose2D(
-//                driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getY()),
-//                driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getX()),
-//                driveValues.angularUnit.fromUnit(AngleUnit.DEGREES, MathKt.angleWrap(pos.getH() + 90))
-//                );
-//
-        currentPos = new Pose2D(
-                driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getX()),
-                driveValues.linearUnit.fromUnit(DistanceUnit.MM, pos.getY()),
-                driveValues.angularUnit.fromUnit(AngleUnit.DEGREES, MathKt.angleWrap(pos.getH()))
-        );
+        currentPos.setX(odo.getPosX(driveValues.linearUnit));
+        currentPos.setY(odo.getPosY(driveValues.linearUnit));
+        currentPos.setH(odo.getHeading(driveValues.angularUnit));
     }
 
     public Pose2D getPosition() {
@@ -77,5 +71,9 @@ public class Odometry {
      */
     public void resetPosition() {
         odo.resetPosAndIMU();
+    }
+
+    public int getLoopTime () {
+        return odo.getLoopTime();
     }
 }
