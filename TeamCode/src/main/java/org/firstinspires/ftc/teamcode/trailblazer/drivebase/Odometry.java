@@ -53,10 +53,14 @@ public class Odometry {
         return currentPos;
     }
 
-    public void setPosition (Pose2D pos, DistanceUnit dU, AngleUnit aU) {
-        odo.setPosX(pos.getX(), dU);
-        odo.setPosY(pos.getY(), dU);
-        odo.setHeading(pos.getH(), aU);
+    public void setPosition (double x, double y, double h, DistanceUnit dU, AngleUnit aU) {
+        odo.setPosition(new org.firstinspires.ftc.robotcore.external.navigation.Pose2D(
+                dU,
+                x,
+                y,
+                aU,
+                h
+        ));
     }
 
     public Pose2D getLastPosition() {
@@ -81,5 +85,9 @@ public class Odometry {
 
     public int getLoopTime () {
         return odo.getLoopTime();
+    }
+
+    public double getFrequency () {
+        return odo.getFrequency();
     }
 }

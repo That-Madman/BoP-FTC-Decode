@@ -24,5 +24,6 @@ public class TestOdom extends OpMode {
         telemetry.addData("position", drive.odometry.getPosition());
 
         telemetry.addData("Loop Time (in milliseconds)", drive.odometry.getLoopTime());
+        telemetry.addData("Loop Frequency (In Hertz)", drive.odometry.getFrequency());
     }
 }

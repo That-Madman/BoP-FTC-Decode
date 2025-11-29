@@ -4,6 +4,7 @@ import static org.fotmrobotics.trailblazer.PathKt.driveVector;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 import org.fotmrobotics.trailblazer.MathKt;
 import org.fotmrobotics.trailblazer.PIDF;
@@ -69,7 +70,7 @@ public class Path {
     public void run() {
         // Resets segment to 0
         this.spline.setSegment(0);
-        
+
         // Sets path state to continue.
         pathState = State.CONTINUE;
 
@@ -86,6 +87,132 @@ public class Path {
 
             // Gets the current position.
             Pose2D pose = drive.odometry.getPosition();
+
+            // Calculates the vector needed for translation.
+            Pose2D driveVector = driveVector(spline, pose, translationPIDF);
+
+            // Estimates how far along the segment the robot is.
+            double t = spline.getClosestPoint(pose);
+
+            // Initializes the remove list.
+            ArrayList<Event> removeEvents = new ArrayList<>();
+            // Loops through events.
+            for (Event event : tempEvents) {
+                // If the robot is past when it should run, the event gets added to the queue.
+                if (event.getInterpolation() <= t && event.getSegment() == spline.getSegment()) {
+                    // Checks for which queue to add the event to.
+                    switch(eventType.get(event)) {
+                        case PARALLEL:
+                            parallelQueue.add(event);
+                        case SEQUENTIAL:
+                            sequentialQueue.add(event);
+                    }
+                    // Adds the event to the remove list.
+                    removeEvents.add(event);
+                }
+            }
+            // Removes all events that have been added to the queue.
+            tempEvents.removeAll(removeEvents);
+
+            // Initializes the remove list.
+            ArrayList<Event> removeQueue = new ArrayList<>();
+            // Loops through the parallel queue.
+            for (Event event : parallelQueue) {
+                // If the boolean returned by the callable is true, the event gets removed.
+                try {
+                    boolean condition = event.call();
+
+                    if (condition) removeQueue.add(event);
+                }
+
+                catch (Exception e) {throw new RuntimeException(e);}
+            }
+            // Removes events that have finished running.
+            parallelQueue.removeAll(removeQueue);
+
+            // Calls the first even in the sequential queue.
+            if (!sequentialQueue.isEmpty()) {
+                // If the boolean returned by the callable is true, the event gets removed.
+                try {
+                    if (sequentialQueue.get(0).call()) {
+                        sequentialQueue.remove(0);
+                    }
+                }
+
+                catch (Exception e) {throw new RuntimeException(e);}
+            }
+
+            // Sets heading target.
+            switch (headingState) {
+                case HEADING_FOLLOW:
+                    headingTarget = MathKt.angleWrap(Math.toDegrees(Math.atan2(driveVector.getY(), driveVector.getX())) - 90);
+                    break;
+                case HEADING_OFFSET:
+                    headingTarget = MathKt.angleWrap(Math.toDegrees(Math.atan2(driveVector.getY(), driveVector.getX())) - 90 + headingValue);
+                    break;
+                case HEADING_CONSTANT:
+                    headingTarget = headingValue;
+                    break;
+            }
+
+            // Sets translational target.
+            switch (pathState) {
+                case CONTINUE:
+                    // Moves the robot.
+                    drive.moveVector(new Pose2D(driveVector.getX(), driveVector.getY(), headingTarget), true);
+
+                    // Sets the target pose to be the current position. This is so the path can be paused at any point.
+                    targetPose.set(new Pose2D(pose.getX(), pose.getY(), headingTarget));
+
+                    // If the path is close to the end, set the target to the end.
+                    if (t > 0.85 && spline.getLength() - 4 == spline.getSegment()) {
+                        pathState = State.PAUSE;
+
+                        Vector2D endPt = spline.getPt(spline.getLength() - 1);
+                        targetPose.set(new Pose2D(endPt.getX(), endPt.getY(), headingTarget));
+                    }
+
+                    // Moves onto the next segment when the current segment has ended.
+                    if (t >= 1) {
+                        spline.incSegment();
+                    }
+
+                    break;
+                case PAUSE:
+                    // Moves the robot to a pose.
+                    drive.movePoint(targetPose);
+
+                    break;
+            }
+        }
+    }
+
+    /**
+     * Runs the path, and prints the position to telemetry.
+     */
+    public void run(Telemetry telemetry) {
+        // Resets segment to 0
+        this.spline.setSegment(0);
+
+        // Sets path state to continue.
+        pathState = State.CONTINUE;
+
+        // Creates a copy of the event list.
+        ArrayList<Event> tempEvents = new ArrayList<>(events);
+
+        // Event queues.
+        ArrayList<Event> sequentialQueue = new ArrayList<>();
+        ArrayList<Event> parallelQueue = new ArrayList<>();
+
+        while (pathState != State.STOP) {
+            // Prevents force stop mode errors.
+            if (opMode.isStopRequested()) pathState = State.STOP;
+
+            // Gets the current position.
+            Pose2D pose = drive.odometry.getPosition();
+
+            telemetry.addData("Position", pose);
+            telemetry.update();
 
             // Calculates the vector needed for translation.
             Pose2D driveVector = driveVector(spline, pose, translationPIDF);
