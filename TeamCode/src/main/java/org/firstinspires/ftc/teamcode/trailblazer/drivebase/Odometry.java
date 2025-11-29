@@ -53,6 +53,12 @@ public class Odometry {
         return currentPos;
     }
 
+    public void setPosition (Pose2D pos, DistanceUnit dU, AngleUnit aU) {
+        odo.setPosX(pos.getX(), dU);
+        odo.setPosY(pos.getY(), dU);
+        odo.setHeading(pos.getH(), aU);
+    }
+
     public Pose2D getLastPosition() {
         return lastPos;
     }
