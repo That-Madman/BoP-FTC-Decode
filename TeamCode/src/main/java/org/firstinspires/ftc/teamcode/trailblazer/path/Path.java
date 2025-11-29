@@ -19,7 +19,7 @@ import java.util.HashMap;
  */
 public class Path {
     // Allows for linear OpMode methods. Important for preventing force stop mode errors.
-    private LinearOpMode opMode = new LinearOpMode() {
+    private final LinearOpMode opMode = new LinearOpMode() {
         @Override
         public void runOpMode() throws InterruptedException {
 
@@ -44,7 +44,7 @@ public class Path {
     ArrayList<Event> events = new ArrayList<>();
     HashMap<Event, EventType> eventType = new HashMap<>();
 
-    enum EventType {
+    public enum EventType {
         SEQUENTIAL,
         PARALLEL
     }
