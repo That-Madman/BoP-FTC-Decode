@@ -25,14 +25,9 @@ public class Drive {
     HardwareMap hardwareMap;
     public Odometry odometry;
 
-    public DriveValues driveValues = new DriveValues();
-
-    public double xScale = driveValues.xScale;
-    public double yScale = driveValues.yScale;
-    public double angularScale = driveValues.angularScale;
-
-    private final PIDF positionPID = driveValues.positionPID;
-    private final PIDF headingPID = driveValues.headingPID;
+    public double xScale = DriveValues.xScale;
+    public double yScale = DriveValues.yScale;
+    public double angularScale = DriveValues.angularScale;
 
     public Drive(HardwareMap hardwareMap) {
         this.hardwareMap = hardwareMap;
@@ -44,9 +39,9 @@ public class Drive {
 
         odometry = new Odometry(hardwareMap);
 
-        setMotors(driveValues.motorNames);
+        setMotors(DriveValues.motorNames);
 
-        for (int i : driveValues.reverseMotors) {
+        for (int i : DriveValues.reverseMotors) {
             motors.get(i).setDirection(DcMotorSimple.Direction.REVERSE);
         }
     }
@@ -66,10 +61,10 @@ public class Drive {
 
     public double[] getPowers(double x, double y, double r) {
         return new double[] {
-                (y * yScale + x * xScale + r * angularScale),
-                (y * yScale - x * xScale - r * angularScale),
-                (y * yScale - x * xScale + r * angularScale),
-                (y * yScale + x * xScale - r * angularScale)
+                (y * DriveValues.yScale + x * DriveValues.xScale + r * DriveValues.angularScale),
+                (y * DriveValues.yScale - x * DriveValues.xScale - r * DriveValues.angularScale),
+                (y * DriveValues.yScale - x * DriveValues.xScale + r * DriveValues.angularScale),
+                (y * DriveValues.yScale + x * DriveValues.xScale - r * DriveValues.angularScale)
         };
     }
 
@@ -96,7 +91,7 @@ public class Drive {
         headingError = (headingError > 180) ? headingError - 360 :
                 (headingError < -180) ? headingError - 360 : headingError;
 
-        double headingOut = headingPID.update(headingError);
+        double headingOut = DriveValues.headingPID.update(headingError);
 
         double r = Math.min(Math.abs(headingOut), 1) * (Math.abs(headingError) / headingError);
 
@@ -114,7 +109,7 @@ public class Drive {
 
         Vector2D difference = point.minus(currentPos);
 
-        double out = Math.min(positionPID.update(difference.norm()), 1);
+        double out = Math.min(DriveValues.positionPID.update(difference.norm()), 1);
 
         Vector2D result = difference.times(out);
 

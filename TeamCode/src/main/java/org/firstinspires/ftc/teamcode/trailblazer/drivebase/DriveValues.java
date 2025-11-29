@@ -8,8 +8,10 @@ import org.fotmrobotics.trailblazer.Vector2D;
 
 /**
  * Edit all components here.
+ * All attributes are marked as final by default under the assumption you will keep them
+ * constant throughout your OpModes.
  */
-public class DriveValues{
+public class DriveValues {
     /*
     Name of the motors in the configuration
     Control Hub:
@@ -19,7 +21,7 @@ public class DriveValues{
     TBD Back Left
     TBD Back Right
     */
-    String[] motorNames = {
+    static final String[] motorNames = {
             "frontLeft",
             "frontRight",
             "backLeft",
@@ -27,35 +29,35 @@ public class DriveValues{
     };
 
     // TODO: Reverse motors if necessary.
-    int[] reverseMotors = {
+    static final int[] reverseMotors = {
             1,
             2,
             3
     };
 
-    GoBildaPinpointDriver.EncoderDirection[]  odoDir = {
+    static final GoBildaPinpointDriver.EncoderDirection[]  odoDir = {
             GoBildaPinpointDriver.EncoderDirection.REVERSED,
             GoBildaPinpointDriver.EncoderDirection.REVERSED
     };
 
     // TODO: Tune the PIDF loops.
-    PIDF positionPID = new PIDF(0.06, 0,0.05,0);
-    PIDF headingPID = new PIDF(0, 0,0,0);
+    static final PIDF positionPID = new PIDF(0.06, 0,0.05,0);
+    static final PIDF headingPID = new PIDF(0.01, 0,0,0);
 
     // TODO: Change if necessary.
     // Position of the GoBildaPinpointDriver relative to the center.
-    Vector2D offset = new Vector2D(4,0);
-    DistanceUnit offsetUnit = DistanceUnit.MM;
+    static final Vector2D offset = new Vector2D(4,0);
+    static final DistanceUnit offsetUnit = DistanceUnit.MM;
 
     // Units
-    public DistanceUnit linearUnit = DistanceUnit.INCH;
-    public AngleUnit angularUnit = AngleUnit.DEGREES;
+    static final public DistanceUnit linearUnit = DistanceUnit.INCH;
+    static final public AngleUnit angularUnit = AngleUnit.DEGREES;
 
     //Type of odom pod used
-    public GoBildaPinpointDriver.GoBildaOdometryPods podType = GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD;
+    static final public GoBildaPinpointDriver.GoBildaOdometryPods podType = GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD;
 
     // Scale for speed.
-    double xScale = 1;
-    double yScale = 1;
-    double angularScale = 1;
+    static final double xScale = 0.25;
+    static final double yScale = 0.25;
+    static final double angularScale = 1;
 }

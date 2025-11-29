@@ -2,11 +2,9 @@ package org.firstinspires.ftc.teamcode.trailblazer.opModes;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 
-import java.util.Timer;
 
 @TeleOp(group = "Trailblazer_OpModes")
 public class TestOdom extends OpMode {

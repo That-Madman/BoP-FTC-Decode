@@ -14,8 +14,6 @@ import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
  * @author Preston Cokis
  */
 public class Odometry {
-    DriveValues driveValues = new DriveValues();
-
     private final GoBildaPinpointDriver odo;
 
     Pose2D currentPos;
@@ -24,11 +22,11 @@ public class Odometry {
     public Odometry(HardwareMap hardwareMap) {
         odo = hardwareMap.get(GoBildaPinpointDriver.class, "odo");
 
-        odo.setOffsets(driveValues.offset.getX(),driveValues.offset.getY(), driveValues.offsetUnit);
+        odo.setOffsets(DriveValues.offset.getX(),DriveValues.offset.getY(), DriveValues.offsetUnit);
 
-        odo.setEncoderDirections(driveValues.odoDir[0], driveValues.odoDir[1]);
+        odo.setEncoderDirections(DriveValues.odoDir[0], DriveValues.odoDir[1]);
 
-        odo.setEncoderResolution(driveValues.podType);
+        odo.setEncoderResolution(DriveValues.podType);
 
         odo.resetPosAndIMU();
 
@@ -45,9 +43,9 @@ public class Odometry {
         lastPos = currentPos;
         odo.update();
 
-        currentPos.setX(odo.getPosX(driveValues.linearUnit));
-        currentPos.setY(odo.getPosY(driveValues.linearUnit));
-        currentPos.setH(odo.getHeading(driveValues.angularUnit));
+        currentPos.setX(odo.getPosX(DriveValues.linearUnit));
+        currentPos.setY(odo.getPosY(DriveValues.linearUnit));
+        currentPos.setH(odo.getHeading(DriveValues.angularUnit));
     }
 
     public Pose2D getPosition() {
@@ -70,7 +68,9 @@ public class Odometry {
      * Resets the position.
      */
     public void resetPosition() {
-        odo.resetPosAndIMU();
+        odo.setPosX(0, DistanceUnit.MM);
+        odo.setPosY(0, DistanceUnit.MM);
+        odo.setHeading(0, AngleUnit.DEGREES);
     }
 
     public int getLoopTime () {

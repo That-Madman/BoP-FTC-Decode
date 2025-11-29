@@ -20,7 +20,8 @@ public class FirstAuto extends LinearOpMode {
         drive = new Drive(hardwareMap);
 
         p = drive.PathBuilder(new Vector2D(0, 0))
-                .point(new Vector2D(0, 30))
+                .point(new Vector2D(30, 0))
+                .point(new Vector2D(15, 30))
                 .build();
 
         telemetry.addLine("Ready");

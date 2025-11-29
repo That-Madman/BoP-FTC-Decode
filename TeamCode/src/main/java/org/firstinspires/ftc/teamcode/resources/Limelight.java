@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
+import org.firstinspires.ftc.teamcode.trailblazer.drivebase.DriveValues;
 import org.fotmrobotics.trailblazer.Pose2D;
 
 import java.util.List;
@@ -60,17 +61,17 @@ public class Limelight {
         if (lastResult != null && lastResult.isValid() && lastResult.getBotpose_MT2()!= null) {
             return new Pose2D(
                     //X
-                    drive.driveValues.linearUnit.fromUnit(
+                    DriveValues.linearUnit.fromUnit(
                             lastResult.getBotpose_MT2().getPosition().unit,
                             lastResult.getBotpose_MT2().getPosition().x),
 
                     //Y
-                    drive.driveValues.linearUnit.fromUnit(
+                    DriveValues.linearUnit.fromUnit(
                             lastResult.getBotpose_MT2().getPosition().unit,
                             lastResult.getBotpose_MT2().getPosition().y),
 
                     //Theta
-                    lastResult.getBotpose_MT2().getOrientation().getYaw(drive.driveValues.angularUnit)
+                    lastResult.getBotpose_MT2().getOrientation().getYaw(DriveValues.angularUnit)
             );
         }
 
