@@ -8,7 +8,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
-import org.fotmrobotics.trailblazer.Pose2D;
 import org.fotmrobotics.trailblazer.Vector2D;
 
 @Autonomous
