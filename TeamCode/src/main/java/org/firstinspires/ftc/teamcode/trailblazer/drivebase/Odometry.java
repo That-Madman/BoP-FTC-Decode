@@ -40,7 +40,7 @@ public class Odometry {
      * Updates the position values.
      */
     public void update() {
-        lastPos = currentPos;
+        lastPos = (Pose2D) currentPos.clone();
         odo.update();
 
         currentPos.setX(odo.getPosX(DriveValues.linearUnit));

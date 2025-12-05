@@ -17,7 +17,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
     //For TrailBlazer
-    implementation 'com.github.FOTMrobotics:TrailBlazer:-SNAPSHOT'
+    implementation 'com.github.FOTMrobotics:TrailBlazer:e9c55f0d0b'
 
     //For Behavior Trees
     implementation 'com.ftcteams:behaviortrees:0.0.2'
