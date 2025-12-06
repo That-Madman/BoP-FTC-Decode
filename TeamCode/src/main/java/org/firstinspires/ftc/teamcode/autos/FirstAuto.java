@@ -77,7 +77,7 @@ public class FirstAuto extends LinearOpMode {
 
         waitForStart();
 
-        drive.odometry.setPosition(53, 53, 225, DistanceUnit.INCH, AngleUnit.DEGREES);
+        drive.odometry.setPosition(53, 53, 45, DistanceUnit.INCH, AngleUnit.DEGREES);
         p.run(telemetry);
         drive.runMotors(new double[4]);
 
