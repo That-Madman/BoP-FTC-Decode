@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class DrumServo{
     CRServo drum;
-    public DrumServo(HardwareMap hardwareMap, boolean manual) {
+    public DrumServo(HardwareMap hardwareMap) {
         drum = hardwareMap.get(CRServo.class, "drum servo");
     }
     public void drumSpin(Gamepad gamepad2){
