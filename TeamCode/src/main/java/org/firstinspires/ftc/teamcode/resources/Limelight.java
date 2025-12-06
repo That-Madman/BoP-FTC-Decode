@@ -12,6 +12,7 @@ import org.fotmrobotics.trailblazer.Pose2D;
 
 import java.util.List;
 
+@Deprecated
 public class Limelight {
     Limelight3A limelight;
     Drive drive;
@@ -28,23 +29,6 @@ public class Limelight {
 
     public void updateVis () {
         lastResult = limelight.getLatestResult();
-    }
-
-    @Deprecated
-    public void sight(Telemetry telemetry){ //TODO: poor practice. Rename or remove.
-        LLResult result = limelight.getLatestResult();
-        List<LLResultTypes.FiducialResult> fiducials = result.getFiducialResults();
-       if (result.isValid()){
-           double tx = result.getTx();
-           for (LLResultTypes.FiducialResult fiducial : fiducials) {
-               int id = fiducial.getFiducialId();
-               telemetry.addData("X distance to AprilTag", tx);
-               telemetry.addData("AprilTag ID", id);
-           }
-       }
-       else{
-           telemetry.addLine("No target");
-       }
     }
 
     /**

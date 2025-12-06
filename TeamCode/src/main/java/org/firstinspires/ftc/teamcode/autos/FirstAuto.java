@@ -13,23 +13,14 @@ import org.fotmrobotics.trailblazer.Vector2D;
 @Autonomous
 public class FirstAuto extends LinearOpMode {
     Drive drive;
-
     Path p;
-
     @Override
     public void runOpMode() throws InterruptedException {
         drive = new Drive(hardwareMap);
 
         p = drive.PathBuilder(new Vector2D(53, 53))
-                //TODO: DELETE THIS ACTION WHEN THE POS SETTING ERROR IS FIXED
-                .action(() -> {
-                    telemetry.addData("Position", drive.odometry.getPosition());
-                    ElapsedTime t = new ElapsedTime();
-
-                    while(t.seconds() < 5);
-                })
-                .xScale(0.25)
-                .yScale(0.25)
+                .xScale(0.25, Path.EventType.SEQUENTIAL)
+                .yScale(0.25, Path.EventType.SEQUENTIAL)
                 .point(new Vector2D(38.5, 38.5))
                 .headingConstant(45)
                 .point(new Vector2D(24, 24))
