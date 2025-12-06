@@ -19,8 +19,9 @@ public class FirstAuto extends LinearOpMode {
         drive = new Drive(hardwareMap);
 
         p = drive.PathBuilder(new Vector2D(53, 53))
-                .xScale(0.25, Path.EventType.SEQUENTIAL)
-                .yScale(0.25, Path.EventType.SEQUENTIAL)
+                //TODO: WHY DOES THIS NOT WORK?
+//                .xScale(0.25, Path.EventType.SEQUENTIAL)
+//                .yScale(0.25, Path.EventType.SEQUENTIAL)
                 .point(new Vector2D(38.5, 38.5))
                 .headingConstant(45)
                 .point(new Vector2D(24, 24))
