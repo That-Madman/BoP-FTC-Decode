@@ -61,10 +61,10 @@ public class Drive {
 
     public double[] getPowers(double x, double y, double r) {
         return new double[] {
-                (y * DriveValues.yScale + x * DriveValues.xScale + r * DriveValues.angularScale),
-                (y * DriveValues.yScale - x * DriveValues.xScale - r * DriveValues.angularScale),
-                (y * DriveValues.yScale - x * DriveValues.xScale + r * DriveValues.angularScale),
-                (y * DriveValues.yScale + x * DriveValues.xScale - r * DriveValues.angularScale)
+                (y * yScale + x * xScale + r * angularScale),
+                (y * yScale - x * xScale - r * angularScale),
+                (y * yScale - x * xScale + r * angularScale),
+                (y * yScale + x * xScale - r * angularScale)
         };
     }
 
