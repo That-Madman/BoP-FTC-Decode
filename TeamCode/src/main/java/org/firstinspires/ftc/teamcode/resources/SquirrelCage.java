@@ -19,7 +19,7 @@ public class SquirrelCage {
             telemetry.addLine("squirrel cage engaged");
         }
         else{
-            telemetry.addLine("");
+            telemetry.addLine("squirrel cage inactive");
         }
     }
 }
