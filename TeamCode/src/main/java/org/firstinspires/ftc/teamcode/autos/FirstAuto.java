@@ -31,7 +31,7 @@ public class FirstAuto extends LinearOpMode {
                 })
                 .headingConstant(90)
                 .point(new Vector2D(12, 24))
-                .action(() ->{
+                .action(() -> {
                     telemetry.addLine("Intaking...");
                     telemetry.update();
                 })
