@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.autos;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
@@ -13,13 +14,15 @@ import org.fotmrobotics.trailblazer.Vector2D;
 public class FirstAuto extends LinearOpMode {
     Drive drive;
     Path p;
+
+    ElapsedTime e;
+
     @Override
     public void runOpMode() throws InterruptedException {
         drive = new Drive(hardwareMap);
+        e = new ElapsedTime();
+
         p = drive.PathBuilder(new Vector2D(53, 53))
-                //TODO: WHY DOES THIS NOT WORK?
-//                .xScale(0.25, Path.EventType.SEQUENTIAL)
-//                .yScale(0.25, Path.EventType.SEQUENTIAL)
                 .point(new Vector2D(38.5, 38.5))
                 .headingConstant(45)
                 .point(new Vector2D(24, 24))
@@ -27,23 +30,25 @@ public class FirstAuto extends LinearOpMode {
                     telemetry.addLine("Shooting 1...");
                     telemetry.update();
 
-                    sleep(1000);
+                    e.reset();
                 })
+                .pause(() -> e.seconds() <= 1)
                 .headingConstant(90)
                 .point(new Vector2D(12, 24))
                 .action(() -> {
                     telemetry.addLine("Intaking...");
                     telemetry.update();
+
+                    e.reset();
                 })
-                .point(new Vector2D(12, 60))
+                .pause(() -> e.seconds() <= 1)
+                .point(new Vector2D(12, 72))
                 .point(new Vector2D(12, 24))
                 .headingConstant(45)
                 .point(new Vector2D(24, 24))
                 .action(() -> {
                     telemetry.addLine("Shooting 2...");
                     telemetry.update();
-
-                    sleep(1000);
                 })
                 .build();
 
