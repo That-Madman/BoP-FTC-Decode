@@ -16,7 +16,6 @@ public class FirstAuto extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         drive = new Drive(hardwareMap);
-
         p = drive.PathBuilder(new Vector2D(53, 53))
                 //TODO: WHY DOES THIS NOT WORK?
 //                .xScale(0.25, Path.EventType.SEQUENTIAL)
