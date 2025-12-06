@@ -20,8 +20,6 @@ public class FirstAuto extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         drive = new Drive(hardwareMap);
 
-        drive.odometry.setPosition(53, 53, 225, DistanceUnit.INCH, AngleUnit.DEGREES);
-
         p = drive.PathBuilder(new Vector2D(53, 53))
                 //TODO: DELETE THIS ACTION WHEN THE POS SETTING ERROR IS FIXED
                 .action(() -> {
@@ -30,6 +28,8 @@ public class FirstAuto extends LinearOpMode {
 
                     while(t.seconds() < 5);
                 })
+                .xScale(0.25)
+                .yScale(0.25)
                 .point(new Vector2D(38.5, 38.5))
                 .headingConstant(45)
                 .point(new Vector2D(24, 24))
@@ -58,6 +58,7 @@ public class FirstAuto extends LinearOpMode {
 
         waitForStart();
 
+        drive.odometry.setPosition(53, 53, 225, DistanceUnit.INCH, AngleUnit.DEGREES);
         p.run(telemetry);
         drive.runMotors(new double[4]);
 

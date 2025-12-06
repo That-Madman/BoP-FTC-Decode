@@ -57,7 +57,7 @@ public class DriveValues {
     static final public GoBildaPinpointDriver.GoBildaOdometryPods podType = GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD;
 
     // Scale for speed.
-    static final double xScale = 0.25;
-    static final double yScale = 0.25;
+    static final double xScale = 1;
+    static final double yScale = 1;
     static final double angularScale = 1;
 }

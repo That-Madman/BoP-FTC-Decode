@@ -137,8 +137,8 @@ public class Drive {
     private boolean rotate = true;
     private double targetDriveHeading = 0;
     public void mecanumDrive (Gamepad gamepad) {
-        double x = gamepad.left_stick_x;
-        double y = -gamepad.left_stick_y;
+        double x = -gamepad.left_stick_y;
+        double y = -gamepad.left_stick_x;
         double r = gamepad.right_stick_x;
 
         double currentHeading = odometry.getPosition().getH();
@@ -155,8 +155,8 @@ public class Drive {
     }
 
     public void trueNorthDrive(Gamepad gamepad) {
-        double x = gamepad.left_stick_x;
-        double y = -gamepad.left_stick_y;
+        double x = -gamepad.left_stick_y;
+        double y = -gamepad.left_stick_x;
         double r = gamepad.right_stick_x;
 
         if (gamepad.right_stick_button) {odometry.resetHeading();}

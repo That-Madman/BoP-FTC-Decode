@@ -8,7 +8,7 @@ import org.fotmrobotics.trailblazer.Pose2D;
 import com.qualcomm.hardware.gobilda.GoBildaPinpointDriver;
 
 /**
- * Controls the odometry. Currently supports the SparkFunOTOS and Gobuilda Odom Computers.
+ * Controls the odometry. Currently supports the SparkFunOTOS and GoBilda Odom Computers.
  * To change the odometry method, change the methods corresponding to what they do.
  *
  * @author Preston Cokis
