@@ -32,7 +32,7 @@ public class FirstAuto extends LinearOpMode {
 
                     e.reset();
                 })
-                .pause(() -> e.seconds() <= 1)
+                .pause(() -> e.seconds() >= 1)
                 .headingConstant(90)
                 .point(new Vector2D(12, 24))
                 .action(() -> {
@@ -49,7 +49,10 @@ public class FirstAuto extends LinearOpMode {
                 .action(() -> {
                     telemetry.addLine("Shooting 2...");
                     telemetry.update();
+                    e.reset();
                 })
+                .pause(() -> e.seconds() >= 1)
+                .point(new Vector2D(-12, 24))
                 .build();
 
         telemetry.addLine("Ready");
