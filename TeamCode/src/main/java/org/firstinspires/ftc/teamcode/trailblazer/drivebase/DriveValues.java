@@ -46,7 +46,7 @@ public class DriveValues {
 
     // TODO: Change if necessary.
     // Position of the GoBildaPinpointDriver relative to the center.
-    static final Vector2D offset = new Vector2D(4,0);
+    static final Vector2D offset = new Vector2D(0,4);
     static final DistanceUnit offsetUnit = DistanceUnit.MM;
 
     // Units
