@@ -10,6 +10,6 @@ public class DrumServo{
         drum = hardwareMap.get(CRServo.class, "drum servo");
     }
     public void drumSpin(Gamepad gamepad2){
-         drum.setPower((gamepad2.left_bumper ? 1:0) - (gamepad2.right_bumper ? 1:0));
+         drum.setPower((gamepad2.left_bumper ? 0.5:0) - (gamepad2.right_bumper ? 0.5:0));
     }
 }
