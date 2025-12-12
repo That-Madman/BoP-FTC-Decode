@@ -11,9 +11,7 @@ public class Angler {
     public Angler (HardwareMap hwMap) {
         angleDcMotor = hwMap.get(DcMotor.class, "angler");
 
-        angleDcMotor.setPower(1);
-        angleDcMotor.setTargetPosition(0);
-        angleDcMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        angleDcMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         angleDcMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
@@ -21,5 +19,4 @@ public class Angler {
     public void hood(Gamepad gamepad2){
         angleDcMotor.setPower(gamepad2.left_trigger - gamepad2.right_trigger);
     }
-
 }

@@ -27,7 +27,6 @@ public class FlywheelSystem {
              telemetry.addData("encoder output idle", fly1.getVelocity());
          }
          else fly1.setVelocity(0);
-
     }
 
     public void flyCon (double velo) {
