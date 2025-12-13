@@ -18,5 +18,11 @@ public class RedFrontSide extends LinearOpMode {
                 .point(new Vector2D(-60, -6))
                 .point(new Vector2D(-48, -24))
                 .build();
+
+        waitForStart();
+
+        p.run(telemetry);
+
+        drive.runMotors(new double[4]);
     }
 }
