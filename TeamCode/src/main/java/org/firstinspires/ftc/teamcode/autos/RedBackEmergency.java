@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
 import org.fotmrobotics.trailblazer.Vector2D;
 
-@Autonomous
+@Autonomous(group = "Emergency")
 public class RedBackEmergency extends LinearOpMode {
     Drive d;
     Path p;
