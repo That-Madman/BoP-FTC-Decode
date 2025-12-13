@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.autos;
+package org.firstinspires.ftc.teamcode.autos.emergency;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
 import org.fotmrobotics.trailblazer.Vector2D;
-@Autonomous
-public class RedFrontSide extends LinearOpMode {
+@Autonomous(group = "Emergency")
+public class RedFrontEmergency extends LinearOpMode {
     Drive drive;
     Path p;
     @Override
