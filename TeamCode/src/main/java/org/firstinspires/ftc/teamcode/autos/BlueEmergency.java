@@ -17,7 +17,7 @@ public class BlueEmergency extends LinearOpMode {
         d = new Drive(hardwareMap);
 
         p = d.PathBuilder(new Vector2D(53, 53))
-                .point(new Vector2D(0, 0))
+                .point(new Vector2D(24, 48))
                 .build();
 
         waitForStart();
