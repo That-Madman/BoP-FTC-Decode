@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
 import org.fotmrobotics.trailblazer.Vector2D;
 
 @Autonomous
-public class RedEmergency extends LinearOpMode {
+public class RedBackEmergency extends LinearOpMode {
     Drive d;
     Path p;
 
@@ -24,7 +24,7 @@ public class RedEmergency extends LinearOpMode {
 
         waitForStart();
 
-        d.odometry.setPosition(53, 53, 45, DistanceUnit.INCH, AngleUnit.DEGREES);
+        d.odometry.setPosition(53, 53, 135, DistanceUnit.INCH, AngleUnit.DEGREES);
         p.run(telemetry);
 
         d.runMotors(new double[4]);

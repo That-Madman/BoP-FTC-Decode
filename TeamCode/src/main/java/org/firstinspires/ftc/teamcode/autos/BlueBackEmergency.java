@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
 import org.fotmrobotics.trailblazer.Vector2D;
 
-public class BlueEmergency extends LinearOpMode {
+public class BlueBackEmergency extends LinearOpMode {
     Drive d;
     Path p;
 
