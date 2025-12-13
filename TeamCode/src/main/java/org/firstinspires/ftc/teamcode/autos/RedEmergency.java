@@ -18,7 +18,9 @@ public class RedEmergency extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         d = new Drive(hardwareMap);
 
-        p = d.PathBuilder(new Vector2D(53, -53)).build();
+        p = d.PathBuilder(new Vector2D(53, -53))
+                .point(new Vector2D(24, -48))
+                .build();
 
         waitForStart();
 
