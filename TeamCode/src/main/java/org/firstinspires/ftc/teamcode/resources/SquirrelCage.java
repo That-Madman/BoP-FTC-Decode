@@ -12,6 +12,6 @@ public class SquirrelCage {
         sCage.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public void cageSpin(Gamepad gamepad2, Telemetry telemetry) {
-        sCage.setPower((gamepad2.x ? 1 : 0) - (gamepad2.y ? 1 : 0));
+        sCage.setPower((gamepad2.y ? 1 : 0) - (gamepad2.x ? 1 : 0));
     }
 }

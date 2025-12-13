@@ -10,7 +10,6 @@ public class Angler {
 
     public Angler (HardwareMap hwMap) {
         angleDcMotor = hwMap.get(DcMotor.class, "angler");
-
         angleDcMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         angleDcMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
