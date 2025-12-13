@@ -3,9 +3,12 @@ package org.firstinspires.ftc.teamcode.autos.emergency;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
 import org.fotmrobotics.trailblazer.Vector2D;
+
 @Autonomous(group = "Emergency")
 public class RedFrontEmergency extends LinearOpMode {
     Drive drive;
@@ -22,6 +25,8 @@ public class RedFrontEmergency extends LinearOpMode {
         waitForStart();
 
         p.run(telemetry);
+
+        drive.odometry.setPosition(-72, -24, 0, DistanceUnit.INCH, AngleUnit.DEGREES);
 
         drive.runMotors(new double[4]);
     }
