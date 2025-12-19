@@ -37,6 +37,8 @@ public class Tele extends OpMode {
         if (tN) drive.trueNorthDrive(gamepad1);
         else    drive.mecanumDrive(gamepad1);
 
+        if (gamepad1.dpad_down) drive.odometry.resetPosition();
+
         if (gamepad1.dpadUpWasPressed()) tN ^= true;
     }
 }
