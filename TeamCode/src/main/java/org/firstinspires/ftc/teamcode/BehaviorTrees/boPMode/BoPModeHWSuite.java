@@ -4,8 +4,9 @@ package org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.resources.Barrel;
 import org.firstinspires.ftc.teamcode.resources.FlywheelSystem;
-import org.firstinspires.ftc.teamcode.resources.SquirrelCage;
+import org.firstinspires.ftc.teamcode.resources.SwyftWheels;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 
 /**
@@ -15,8 +16,8 @@ import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 public class BoPModeHWSuite { //TODO: KEEP UPDATED
     Drive drive;
     FlywheelSystem flyWheel;
-    SquirrelCage sCage;
-    //TODO: figure out which Limelight to use
+    SwyftWheels sCage;
+    Barrel bar;
 
     public BoPModeHWSuite (HardwareMap hwMap){
         for (LynxModule mod : hwMap.getAll(LynxModule.class))
@@ -24,6 +25,7 @@ public class BoPModeHWSuite { //TODO: KEEP UPDATED
 
         drive = new Drive(hwMap);
         flyWheel = new FlywheelSystem(hwMap);
-        sCage = new SquirrelCage(hwMap);
+        sCage = new SwyftWheels(hwMap);
+        bar = new Barrel(hwMap);
     }
 }
