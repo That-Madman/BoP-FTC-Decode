@@ -8,6 +8,10 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 public class MoveStraightToFire extends BNode {
     @Override
     public State tick(DebugTree debug, BoPMode opMode) {
-        return null;
+        if (null ==  org.firstinspires.ftc.teamcode.paths.RedPos.MoveStraightToFire.p)
+            org.firstinspires.ftc.teamcode.paths.RedPos.MoveStraightToFire.factory(opMode.hwSuite.drive);
+
+        return (org.firstinspires.ftc.teamcode.paths.RedPos.MoveStraightToFire.p.runAsync()) ?
+                State.SUCCESS : State.RUNNING;
     }
 }

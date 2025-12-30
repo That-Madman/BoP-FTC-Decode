@@ -227,7 +227,7 @@ public class Path {
                 // If the robot is past when it should run, the event gets added to the queue.
                 if (event.getInterpolation() <= t && event.getSegment() == spline.getSegment()) {
                     // Checks for which queue to add the event to.
-                    switch(eventType.get(event)) {
+                    switch (eventType.get(event)) {
                         case PARALLEL:
                             parallelQueue.add(event);
                         case SEQUENTIAL:
@@ -249,9 +249,9 @@ public class Path {
                     boolean condition = event.call();
 
                     if (condition) removeQueue.add(event);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
                 }
-
-                catch (Exception e) {throw new RuntimeException(e);}
             }
             // Removes events that have finished running.
             parallelQueue.removeAll(removeQueue);
@@ -262,6 +262,131 @@ public class Path {
                 try {
                     if (sequentialQueue.get(0).call()) {
                         sequentialQueue.remove(0);
+                    }
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+
+            // Sets heading target.
+            switch (headingState) {
+                case HEADING_FOLLOW:
+                    headingTarget = MathKt.angleWrap(Math.toDegrees(Math.atan2(driveVector.getY(), driveVector.getX())) - 90);
+                    break;
+                case HEADING_OFFSET:
+                    headingTarget = MathKt.angleWrap(Math.toDegrees(Math.atan2(driveVector.getY(), driveVector.getX())) - 90 + headingValue);
+                    break;
+                case HEADING_CONSTANT:
+                    headingTarget = headingValue;
+                    break;
+            }
+
+            // Sets translational target.
+            switch (pathState) {
+                case CONTINUE:
+                    // Moves the robot.
+                    drive.moveVector(new Pose2D(driveVector.getX(), driveVector.getY(), headingTarget), true);
+
+                    // Sets the target pose to be the current position. This is so the path can be paused at any point.
+                    targetPose.set(new Pose2D(pose.getX(), pose.getY(), headingTarget));
+
+                    // If the path is close to the end, set the target to the end.
+                    if (t > 0.85 && spline.getLength() - 4 == spline.getSegment()) {
+                        pathState = State.PAUSE;
+
+                        Vector2D endPt = spline.getPt(spline.getLength() - 1);
+                        targetPose.set(new Pose2D(endPt.getX(), endPt.getY(), headingTarget));
+                    }
+
+                    // Moves onto the next segment when the current segment has ended.
+                    if (t >= 1) {
+                        spline.incSegment();
+                    }
+
+                    break;
+                case PAUSE:
+                    // Moves the robot to a pose.
+                    drive.movePoint(targetPose);
+
+                    break;
+            }
+        }
+    }
+
+    private ArrayList<Event> asyncTempEvents;
+    private ArrayList <Event> asyncSequentialQueue;
+    private ArrayList<Event> asyncParallelQueue;
+
+    /**
+     * Runs the path asynchronously.
+     */
+    public boolean runAsync() {
+        // Sets path state to continue.
+        pathState = State.CONTINUE;
+
+        // Creates a copy of the event list.
+        if (null == asyncParallelQueue) {
+            asyncTempEvents = new ArrayList<>(events);
+
+            // Event queues.
+            asyncSequentialQueue = new ArrayList<>();
+            asyncParallelQueue = new ArrayList<>();
+        }
+
+            // Prevents force stop mode errors.
+            if (opMode.isStopRequested()) pathState = State.STOP;
+
+            // Gets the current position.
+            Pose2D pose = drive.odometry.getPosition();
+
+            // Calculates the vector needed for translation.
+            Pose2D driveVector = driveVector(spline, pose, translationPIDF);
+
+            // Estimates how far along the segment the robot is.
+            double t = spline.getClosestPoint(pose);
+
+            // Initializes the remove list.
+            ArrayList<Event> removeEvents = new ArrayList<>();
+            // Loops through events.
+            for (Event event : asyncTempEvents) {
+                // If the robot is past when it should run, the event gets added to the queue.
+                if (event.getInterpolation() <= t && event.getSegment() == spline.getSegment()) {
+                    // Checks for which queue to add the event to.
+                    switch(eventType.get(event)) {
+                        case PARALLEL:
+                            asyncParallelQueue.add(event);
+                        case SEQUENTIAL:
+                            asyncSequentialQueue.add(event);
+                    }
+                    // Adds the event to the remove list.
+                    removeEvents.add(event);
+                }
+            }
+            // Removes all events that have been added to the queue.
+            asyncTempEvents.removeAll(removeEvents);
+
+            // Initializes the remove list.
+            ArrayList<Event> removeQueue = new ArrayList<>();
+            // Loops through the parallel queue.
+            for (Event event : asyncParallelQueue) {
+                // If the boolean returned by the callable is true, the event gets removed.
+                try {
+                    boolean condition = event.call();
+
+                    if (condition) removeQueue.add(event);
+                }
+
+                catch (Exception e) {throw new RuntimeException(e);}
+            }
+            // Removes events that have finished running.
+            asyncParallelQueue.removeAll(removeQueue);
+
+            // Calls the first even in the sequential queue.
+            if (!asyncSequentialQueue.isEmpty()) {
+                // If the boolean returned by the callable is true, the event gets removed.
+                try {
+                    if (asyncSequentialQueue.get(0).call()) {
+                        asyncSequentialQueue.remove(0);
                     }
                 }
 
@@ -310,6 +435,6 @@ public class Path {
 
                     break;
             }
-        }
+            return pathState == State.STOP;
     }
 }
