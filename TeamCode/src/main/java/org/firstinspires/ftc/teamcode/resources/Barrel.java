@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+//TODO: REWRITE TO BE CORRECT
 public class Barrel {
     DcMotorEx indexer;
     boolean emergency;

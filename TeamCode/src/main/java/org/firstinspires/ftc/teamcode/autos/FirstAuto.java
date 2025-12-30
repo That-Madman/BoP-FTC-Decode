@@ -12,6 +12,7 @@ import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
 import org.fotmrobotics.trailblazer.Vector2D;
 
 @Disabled //not tested fully. Have to assume unsafe.
+@Deprecated
 @Autonomous
 public class FirstAuto extends LinearOpMode {
     Drive drive;

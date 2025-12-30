@@ -1,11 +1,11 @@
-package org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos;
+package org.firstinspires.ftc.teamcode.BehaviorTrees.Actions;
 
 import com.ftcteams.behaviortrees.DebugTree;
 
 import org.firstinspires.ftc.teamcode.BehaviorTrees.BNode;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 
-public class MoveBack extends BNode {
+public class RevUpIntake extends BNode {
     @Override
     public State tick(DebugTree debug, BoPMode opMode) {
         return null;

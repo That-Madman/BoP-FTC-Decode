@@ -14,10 +14,12 @@ import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
  * It should be updated whenever a new subsystem is added.
  */
 public class BoPModeHWSuite { //TODO: KEEP UPDATED
-    Drive drive;
-    FlywheelSystem flyWheel;
-    SwyftWheels sCage;
-    Barrel bar;
+    public Drive drive;
+    public FlywheelSystem flyWheel;
+    public SwyftWheels sCage;
+
+    //TODO: RE-ENGAGE WHEN DONE
+//    Barrel bar;
 
     public BoPModeHWSuite (HardwareMap hwMap){
         for (LynxModule mod : hwMap.getAll(LynxModule.class))
@@ -26,6 +28,6 @@ public class BoPModeHWSuite { //TODO: KEEP UPDATED
         drive = new Drive(hwMap);
         flyWheel = new FlywheelSystem(hwMap);
         sCage = new SwyftWheels(hwMap);
-        bar = new Barrel(hwMap);
+//        bar = new Barrel(hwMap);
     }
 }

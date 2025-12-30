@@ -1,0 +1,22 @@
+package org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.initializeOdom;
+
+import com.ftcteams.behaviortrees.DebugTree;
+
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.BNode;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
+import org.firstinspires.ftc.teamcode.resources.Helpers;
+
+public class InitializeOdomRedPos extends BNode {
+    @Override
+    public State tick(DebugTree debug, BoPMode opMode) {
+        opMode.hwSuite.drive.odometry.setPosition(52, -52, -45, DistanceUnit.INCH, AngleUnit.DEGREES);
+
+        return
+                (Helpers.apprEqual(opMode.hwSuite.drive.odometry.getPosition().getX(), 52, 1) &&
+                        Helpers.apprEqual(opMode.hwSuite.drive.odometry.getPosition().getY(), -52, 1) &&
+                        Helpers.apprEqual(opMode.hwSuite.drive.odometry.getPosition().getH(), -45, -5)) ?
+                State.SUCCESS : State.FAILURE;
+    }
+}
