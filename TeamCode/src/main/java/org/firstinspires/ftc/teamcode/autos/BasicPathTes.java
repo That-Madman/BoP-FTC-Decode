@@ -62,7 +62,7 @@ public class BasicPathTes extends LinearOpMode {
 
         d.odometry.setPosition(52,-52,-45, DistanceUnit.INCH, AngleUnit.DEGREES);
         p.run(telemetry);
-        d.runMotors(new double[3]);
+        d.runMotors(new double[4]);
 
         while(opModeIsActive() && !isStopRequested()){
             telemetry.addData("Position",d.odometry.getPosition());
