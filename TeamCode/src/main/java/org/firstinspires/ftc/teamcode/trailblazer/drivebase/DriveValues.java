@@ -36,7 +36,7 @@ public class DriveValues {
     };
 
     static final GoBildaPinpointDriver.EncoderDirection[]  odoDir = {
-            GoBildaPinpointDriver.EncoderDirection.REVERSED,
+            GoBildaPinpointDriver.EncoderDirection.FORWARD,
             GoBildaPinpointDriver.EncoderDirection.REVERSED
     };
 
