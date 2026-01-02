@@ -41,8 +41,8 @@ public class BasicPathTes extends LinearOpMode {
                     e.reset();
                 })
                 .pause(() ->e.seconds() >= 1.5)
-                .point(new Vector2D(-8.6,-25.6))
                 .headingConstant(-90)
+                .point(new Vector2D(-8.6,-25.6))
                 .point(new Vector2D(-12.6,-56))
                 .point(new Vector2D(-8.6,-25.6))
                 .headingConstant(-45)
@@ -53,6 +53,7 @@ public class BasicPathTes extends LinearOpMode {
 
                     e.reset();
                 })
+                .point(new Vector2D(12, -24))
                 .build();
 
         telemetry.addLine("Ready...");

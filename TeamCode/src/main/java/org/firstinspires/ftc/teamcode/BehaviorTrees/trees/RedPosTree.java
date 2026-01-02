@@ -8,12 +8,16 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.Delay;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.EmergencyPark;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveFrom2ToFire;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveToIntake2;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveToPickup2;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.Park;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Conditions.IsOdomCorrectRedPos;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.initializeOdom.InitializeOdomRedPos;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveStraightToFire;
-import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.UnloadBarrel;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.FireAllInBarrel;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveToIntake1;
-import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveToPickup;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveToPickup1;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.RevUpIntake;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.CheckAndIndex;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.DisengageIntake;
@@ -30,15 +34,23 @@ public class RedPosTree {
                                         new Delay(1, new ElapsedTime()),
                                         new IsOdomCorrectRedPos())),
                         new MoveStraightToFire(),
-                        new UnloadBarrel(),
-                        new MoveToPickup(),
+                        new FireAllInBarrel(),
+                        new MoveToPickup1(),
                         new RevUpIntake(),
                         new Parallel(2,
                                 new MoveToIntake1(),
                                 new CheckAndIndex()),
                         new DisengageIntake(),
                         new MoveFrom1ToFire(),
-                        new UnloadBarrel()),
+                        new FireAllInBarrel(),
+                        new MoveToPickup2(),
+                        new RevUpIntake(),
+                        new Parallel(2,
+                                new MoveToIntake2(),
+                                new CheckAndIndex()),
+                        new MoveFrom2ToFire(),
+                        new DisengageIntake(),
+                        new Park()),
                 new EmergencyPark());
     }
 }
@@ -50,16 +62,24 @@ public class RedPosTree {
 |  |  |  [InitializeOdomRedPos]
 |  |  |  ->
 |  |  |  |  [Delay]
-|  |  |  |  [IsOdomCorrectRedPos]
+|  |  |  |  (IsOdomCorrectRedPos)
 |  |  [MoveStraightToFire]
-|  |  [UnpatternedFire]
-|  |  [MoveToPickup]
+|  |  [FireAllInBarrel]
+|  |  [MoveToPickup1]
 |  |  [RevUpIntake]
 |  |  =2
 |  |  |  [MoveToIntake1]
 |  |  |  [CheckAndIndex]
 |  |  [DisengageIntake]
 |  |  [MoveFrom1ToFire]
-|  |  [UnpatternedFire]
+|  |  [FireAllInBarrel]
+|  |  [MoveToPickup2]
+|  |  [RevUpIntake]
+|  |  =2
+|  |  |  [MoveToIntake2]
+|  |  |  [CheckAndIndex]
+|  |  [MoveFrom2ToFire]
+|  |  [DisengageIntake]
+|  |  [Park]
 |  [EmergencyPark]
  */

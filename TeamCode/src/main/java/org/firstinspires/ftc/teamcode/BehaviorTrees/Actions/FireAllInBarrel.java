@@ -5,7 +5,7 @@ import com.ftcteams.behaviortrees.DebugTree;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.BNode;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 
-public class UnloadBarrel extends BNode {
+public class FireAllInBarrel extends BNode {
     @Override
     public State tick(DebugTree debug, BoPMode opMode) {
         //TODO: IMPLEMENT
