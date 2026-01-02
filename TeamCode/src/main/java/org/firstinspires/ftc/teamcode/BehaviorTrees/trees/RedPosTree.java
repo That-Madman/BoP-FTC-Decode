@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Conditions.IsOdomCorrectRedPos;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.initializeOdom.InitializeOdomRedPos;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveStraightToFire;
-import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.firePatterns.UnpatternedFire;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.UnloadBarrel;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveToIntake1;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveToPickup;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.RevUpIntake;
@@ -30,7 +30,7 @@ public class RedPosTree {
                                         new Delay(1, new ElapsedTime()),
                                         new IsOdomCorrectRedPos())),
                         new MoveStraightToFire(),
-                        new UnpatternedFire(),
+                        new UnloadBarrel(),
                         new MoveToPickup(),
                         new RevUpIntake(),
                         new Parallel(2,
@@ -38,7 +38,7 @@ public class RedPosTree {
                                 new CheckAndIndex()),
                         new DisengageIntake(),
                         new MoveFrom1ToFire(),
-                        new UnpatternedFire()),
+                        new UnloadBarrel()),
                 new EmergencyPark());
     }
 }
