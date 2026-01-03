@@ -11,8 +11,7 @@ import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
 import org.fotmrobotics.trailblazer.Vector2D;
 
 @Autonomous
-public class BasicPathBluePos extends LinearOpMode {
-
+public class BasicPathBlueNeg extends LinearOpMode {
     Drive d;
     Path p;
     ElapsedTime e;
@@ -21,40 +20,29 @@ public class BasicPathBluePos extends LinearOpMode {
         d = new Drive(hardwareMap);
         e = new ElapsedTime();
 
-        p = d.PathBuilder(new Vector2D(52,52))
-                .headingConstant(45)
-                .point(new Vector2D(24,24))
+        p = d.PathBuilder(new Vector2D(68,-15))
                 .action(() -> {
-                    telemetry.addLine("Shooting...");
-                    telemetry.update();
-                })
-                .pause(()-> e.seconds() >= 1.5)
-                .headingConstant(90)
-                .point(new Vector2D(12,30))
-                .point(new Vector2D(11.4,56))
-                .point(new Vector2D(12,30))
-                .headingConstant(45)
-                .point(new Vector2D(24,24))
-                .action(() -> {
-                    telemetry.addLine("Shooting...");
+                    telemetry.addLine("Firing...");
                     telemetry.update();
 
                     e.reset();
                 })
                 .pause(() -> e.seconds() >= 1.5)
                 .headingConstant(90)
-                .point(new Vector2D(-8.6,25.6))
-                .point(new Vector2D(-12.6,56))
-                .point(new Vector2D(-8.6,25.6))
-                .headingConstant(-45)
-                .point(new Vector2D(24,24))
+                .point(new Vector2D(-40, 30))
+                .point(new Vector2D(-37, 60))
+                .point(new Vector2D(-40, 30))
+                .headingConstant(0)
+                .point(new Vector2D(68,-15))
                 .action(() -> {
-                    telemetry.addLine("Shooting...");
+                    telemetry.addLine("Firing...");
                     telemetry.update();
 
                     e.reset();
                 })
-                .point(new Vector2D(12, 24))
+                .pause(() -> e.seconds() >= 1.5)
+                .headingFollow()
+                .point(new Vector2D(-55, 30))
                 .build();
 
         telemetry.addLine("Ready...");
@@ -62,7 +50,7 @@ public class BasicPathBluePos extends LinearOpMode {
 
         waitForStart();
 
-        d.odometry.setPosition(52,52,45, DistanceUnit.INCH, AngleUnit.DEGREES);
+        d.odometry.setPosition(-68,15,0, DistanceUnit.INCH, AngleUnit.DEGREES);
         p.run(telemetry);
         d.runMotors(new double[4]);
 
