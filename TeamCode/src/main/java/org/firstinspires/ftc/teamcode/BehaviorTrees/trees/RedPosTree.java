@@ -25,6 +25,9 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.
 
 
 public class RedPosTree {
+   static MoveToIntake1 m1 = new MoveToIntake1();
+   static MoveToIntake2 m2 = new MoveToIntake2();
+
     public static Node root(){
         return new Failover(
                 new Sequence(
@@ -38,16 +41,16 @@ public class RedPosTree {
                         new MoveToPickup1(),
                         new RevUpIntake(),
                         new Parallel(2,
-                                new MoveToIntake1(),
-                                new CheckAndIndex()),
+                                m1,
+                                new CheckAndIndex(m1)),
                         new DisengageIntake(),
                         new MoveFrom1ToFire(),
                         new FireAllInBarrel(),
                         new MoveToPickup2(),
                         new RevUpIntake(),
                         new Parallel(2,
-                                new MoveToIntake2(),
-                                new CheckAndIndex()),
+                                m2,
+                                new CheckAndIndex(m2)),
                         new MoveFrom2ToFire(),
                         new DisengageIntake(),
                         new Park()),

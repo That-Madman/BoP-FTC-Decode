@@ -2,12 +2,12 @@ package org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos
 
 import com.ftcteams.behaviortrees.DebugTree;
 
+import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.BMoveToIntakeNode;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.BNode;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 import org.firstinspires.ftc.teamcode.paths.RedPos.MoveToPickup1;
 
-public class MoveToIntake2 extends BNode {
-    public static boolean finished = false;
+public class MoveToIntake2 extends BMoveToIntakeNode {
 
     @Override
     public State tick(DebugTree debug, BoPMode opMode) {
@@ -15,7 +15,7 @@ public class MoveToIntake2 extends BNode {
             org.firstinspires.ftc.teamcode.paths.RedPos.MoveToIntake2.factory(opMode.hwSuite.drive);
 
         if (org.firstinspires.ftc.teamcode.paths.RedPos.MoveToIntake2.p.runAsync()) {
-            finished = true;
+            isFinished = true;
             return State.SUCCESS;
         } else {
             return State.RUNNING;
