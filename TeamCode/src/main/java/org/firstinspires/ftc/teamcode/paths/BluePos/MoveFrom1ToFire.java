@@ -1,0 +1,18 @@
+package org.firstinspires.ftc.teamcode.paths.BluePos;
+
+import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
+import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
+import org.fotmrobotics.trailblazer.Vector2D;
+
+public class MoveFrom1ToFire {
+    public static Path p;
+
+    public static void factory (Drive d) {
+        p = d.PathBuilder(new Vector2D(11.4, 56))
+                .headingConstant(90)
+                .point(new Vector2D(12 , 30))
+                .headingConstant(45)
+                .point(new Vector2D(24,24))
+                .build();
+    }
+}

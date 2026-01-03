@@ -10,7 +10,7 @@ public class RedPos extends BoPMode {
 
     @Override
     public void locInit() {
-
+        RedPosTree.factory(hwSuite.drive);
     }
 
     @Override
