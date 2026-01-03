@@ -3,42 +3,14 @@ package org.firstinspires.ftc.teamcode.teleops;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.resources.Angler;
-import org.firstinspires.ftc.teamcode.resources.DrumServo;
-import org.firstinspires.ftc.teamcode.resources.FlywheelSystem;
-import org.firstinspires.ftc.teamcode.resources.SquirrelCage;
-import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
-@TeleOp
+@TeleOp(name = "DRIVE TEAM, CHOOSE THIS ONE")
 public class Tele extends OpMode {
-    Drive drive;
-    DrumServo drumServo;
-    Angler angler;
-    SquirrelCage sCage;
-    FlywheelSystem fly;
-
-    boolean tN = true;
 
     @Override
     public void init() {
-        drumServo = new DrumServo(hardwareMap);
-        drive = new Drive(hardwareMap);
-        sCage = new SquirrelCage(hardwareMap);
-        angler = new Angler(hardwareMap);
-        fly = new FlywheelSystem(hardwareMap);
     }
 
     @Override
     public void loop() {
-        drumServo.drumSpin(gamepad2);
-        sCage.cageSpin(gamepad2, telemetry);
-        angler.hood(gamepad2);
-        fly.flyShoot(gamepad1, telemetry);
-
-        if (tN) drive.trueNorthDrive(gamepad1);
-        else    drive.mecanumDrive(gamepad1);
-
-        if (gamepad1.dpad_down) drive.odometry.resetPosition();
-
-        if (gamepad1.dpadUpWasPressed()) tN ^= true;
     }
 }

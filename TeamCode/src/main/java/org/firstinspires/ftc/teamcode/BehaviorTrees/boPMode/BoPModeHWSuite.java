@@ -4,9 +4,9 @@ package org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.resources.DrumServo;
+import org.firstinspires.ftc.teamcode.resources.Barrel;
 import org.firstinspires.ftc.teamcode.resources.FlywheelSystem;
-import org.firstinspires.ftc.teamcode.resources.SquirrelCage;
+import org.firstinspires.ftc.teamcode.resources.SwyftWheels;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 
 /**
@@ -14,19 +14,20 @@ import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
  * It should be updated whenever a new subsystem is added.
  */
 public class BoPModeHWSuite { //TODO: KEEP UPDATED
-    Drive drive;
-    DrumServo drum;
-    FlywheelSystem flyWheel;
-    SquirrelCage sCage;
-    //TODO: figure out which Limelight to use
+    public Drive drive;
+    public FlywheelSystem flyWheel;
+    public SwyftWheels sCage;
+
+    //TODO: RE-ENGAGE WHEN DONE
+//    Barrel bar;
 
     public BoPModeHWSuite (HardwareMap hwMap){
         for (LynxModule mod : hwMap.getAll(LynxModule.class))
             mod.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
 
         drive = new Drive(hwMap);
-        drum = new DrumServo(hwMap);
         flyWheel = new FlywheelSystem(hwMap);
-        sCage = new SquirrelCage(hwMap);
+        sCage = new SwyftWheels(hwMap);
+//        bar = new Barrel(hwMap);
     }
 }
