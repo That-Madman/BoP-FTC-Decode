@@ -22,9 +22,22 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.RevUpIntake;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.CheckAndIndex;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.DisengageIntake;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveFrom1ToFire;
+import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 
 
 public class RedPosTree {
+
+    public static void factory (Drive d) {
+        org.firstinspires.ftc.teamcode.paths.RedPos.MoveStraightToFire.factory(d);
+        org.firstinspires.ftc.teamcode.paths.RedPos.MoveToPickup1.factory(d);
+        org.firstinspires.ftc.teamcode.paths.RedPos.MoveToIntake1.factory(d);
+        org.firstinspires.ftc.teamcode.paths.RedPos.MoveFrom1ToFire.factory(d);
+        org.firstinspires.ftc.teamcode.paths.RedPos.MoveToPickup2.factory(d);
+        org.firstinspires.ftc.teamcode.paths.RedPos.MoveToIntake2.factory(d);
+        org.firstinspires.ftc.teamcode.paths.RedPos.MoveFrom2ToFire.factory(d);
+        org.firstinspires.ftc.teamcode.paths.RedPos.Park.factory(d);
+    }
+
    static MoveToIntake1 m1 = new MoveToIntake1();
    static MoveToIntake2 m2 = new MoveToIntake2();
 

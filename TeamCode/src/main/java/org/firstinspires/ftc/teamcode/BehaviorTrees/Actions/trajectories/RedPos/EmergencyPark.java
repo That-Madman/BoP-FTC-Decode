@@ -8,6 +8,8 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 public class EmergencyPark extends BNode {
     @Override
     public State tick(DebugTree debug, BoPMode opMode) {
-        return null;
+        //TODO: ADD AN ACTUAL EMERGENCY PARKING SYSTEM
+        opMode.telemetry.addLine("We failed");
+        return State.SUCCESS;
     }
 }
