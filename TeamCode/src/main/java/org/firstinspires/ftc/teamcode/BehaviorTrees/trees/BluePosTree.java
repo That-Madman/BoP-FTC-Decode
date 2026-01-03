@@ -74,10 +74,10 @@ public class BluePosTree {
 ?
 |  ->
 |  |  ?
-|  |  |  [InitializeOdomRedPos]
+|  |  |  [InitializeOdomBluePos]
 |  |  |  ->
 |  |  |  |  [Delay]
-|  |  |  |  (IsOdomCorrectRedPos)
+|  |  |  |  (IsOdomCorrectBluePos)
 |  |  [MoveStraightToFire]
 |  |  [FireAllInBarrel]
 |  |  [MoveToPickup1]
