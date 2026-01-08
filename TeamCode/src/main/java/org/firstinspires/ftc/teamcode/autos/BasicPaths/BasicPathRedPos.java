@@ -10,7 +10,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
 import org.fotmrobotics.trailblazer.Vector2D;
-@Autonomous
+@Autonomous(group = "Basic Path")
 public class BasicPathRedPos extends LinearOpMode {
     Drive d;
     Path p;

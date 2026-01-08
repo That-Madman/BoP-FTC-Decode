@@ -24,6 +24,9 @@ abstract public class BoPMode extends LinearOpMode {
 
         locInit();
 
+        telemetry.addLine("OpMode is ready to start.");
+        telemetry.update();
+
         waitForStart();
 
         main();

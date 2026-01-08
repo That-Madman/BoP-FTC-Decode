@@ -17,8 +17,17 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedNeg.
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedNeg.MoveToPickup;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedNeg.Park;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Conditions.IsOdomCorrectRedNeg;
+import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 
 public class RedNegTree {
+
+   public static void factory (Drive d) {
+       org.firstinspires.ftc.teamcode.paths.RedNeg.MoveToPickup.factory(d);
+       org.firstinspires.ftc.teamcode.paths.RedNeg.MoveToIntake.factory(d);
+       org.firstinspires.ftc.teamcode.paths.RedNeg.MoveBackToFire.factory(d);
+       org.firstinspires.ftc.teamcode.paths.RedNeg.Park.factory(d);
+   }
+
     static MoveToIntake m = new MoveToIntake();
 
     public static Node root() {

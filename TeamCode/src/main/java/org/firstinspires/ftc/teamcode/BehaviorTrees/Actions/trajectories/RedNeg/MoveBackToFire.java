@@ -8,6 +8,10 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 public class MoveBackToFire extends BNode {
     @Override
     public State tick(DebugTree debug, BoPMode opMode) {
-        return null;
+        if (null == org.firstinspires.ftc.teamcode.paths.RedNeg.MoveBackToFire.p)
+            org.firstinspires.ftc.teamcode.paths.RedNeg.MoveBackToFire.factory(opMode.hwSuite.drive);
+
+        return (org.firstinspires.ftc.teamcode.paths.RedNeg.MoveBackToFire.p.runAsync()) ?
+                State.SUCCESS : State.RUNNING;
     }
 }

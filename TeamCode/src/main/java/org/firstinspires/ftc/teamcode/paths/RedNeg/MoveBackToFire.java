@@ -1,0 +1,18 @@
+package org.firstinspires.ftc.teamcode.paths.RedNeg;
+
+import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
+import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
+import org.fotmrobotics.trailblazer.Vector2D;
+
+public class MoveBackToFire {
+    public static Path p;
+
+    public static void factory (Drive d) {
+        p = d.PathBuilder(new Vector2D(-37,-60))
+                .headingConstant(-90)
+                .point(new Vector2D(-40, -30))
+                .headingConstant(0)
+                .point(new Vector2D(-68, -15))
+                .build();
+    }
+}
