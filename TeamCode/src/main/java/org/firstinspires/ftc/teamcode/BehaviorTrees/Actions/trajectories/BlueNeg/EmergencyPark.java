@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedNeg;
+package org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.BlueNeg;
 
 import com.ftcteams.behaviortrees.DebugTree;
 
@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 public class EmergencyPark extends BNode {
     @Override
     public State tick(DebugTree debug, BoPMode opMode) {
-         //TODO: ADD AN ACTUAL EMERGENCY PARKING SYSTEM
+        //TODO: ADD AN ACTUAL EMERGENCY PARKING SYSTEM
         opMode.telemetry.addLine("We failed");
         opMode.telemetry.update();
         return State.SUCCESS;
