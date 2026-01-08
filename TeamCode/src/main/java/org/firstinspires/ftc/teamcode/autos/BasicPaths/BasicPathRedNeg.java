@@ -15,6 +15,7 @@ public class BasicPathRedNeg extends LinearOpMode {
     Drive d;
     Path p;
     ElapsedTime e;
+
     @Override
     public void runOpMode() throws InterruptedException {
         d = new Drive(hardwareMap);
@@ -28,14 +29,14 @@ public class BasicPathRedNeg extends LinearOpMode {
                     e.reset();
                 })
                 .pause(() -> e.seconds() >= 1.5)
-                .headingConstant(90)
+                .headingConstant(-90)
                 .point(new Vector2D(-40, -30))
                 .point(new Vector2D(-37, -60))
                 .point(new Vector2D(-40, -30))
                 .headingConstant(0)
-                .point(new Vector2D(68,-15))
+                .point(new Vector2D(-68, -15))
                 .action(() -> {
-                    telemetry.addLine("Firing...");
+                    telemetry.addLine("Firing again...");
                     telemetry.update();
 
                     e.reset();
@@ -57,7 +58,6 @@ public class BasicPathRedNeg extends LinearOpMode {
         while(opModeIsActive() && !isStopRequested()){
             telemetry.addData("Position",d.odometry.getPosition());
             telemetry.update();
-
         }
     }
 }
