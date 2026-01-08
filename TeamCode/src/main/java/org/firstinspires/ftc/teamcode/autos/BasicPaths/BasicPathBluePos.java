@@ -12,7 +12,6 @@ import org.fotmrobotics.trailblazer.Vector2D;
 
 @Autonomous
 public class BasicPathBluePos extends LinearOpMode {
-
     Drive d;
     Path p;
     ElapsedTime e;

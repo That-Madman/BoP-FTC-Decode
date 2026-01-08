@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.trailblazer.path.Path;
 import org.fotmrobotics.trailblazer.Vector2D;
 
 @Autonomous
-public class BasicPathBlueNeg extends LinearOpMode {
+public class BasicPathRedNeg extends LinearOpMode {
     Drive d;
     Path p;
     ElapsedTime e;
@@ -20,7 +20,7 @@ public class BasicPathBlueNeg extends LinearOpMode {
         d = new Drive(hardwareMap);
         e = new ElapsedTime();
 
-        p = d.PathBuilder(new Vector2D(-68,15))
+        p = d.PathBuilder(new Vector2D(-68,-15))
                 .action(() -> {
                     telemetry.addLine("Firing...");
                     telemetry.update();
@@ -29,11 +29,11 @@ public class BasicPathBlueNeg extends LinearOpMode {
                 })
                 .pause(() -> e.seconds() >= 1.5)
                 .headingConstant(90)
-                .point(new Vector2D(-40, 30))
-                .point(new Vector2D(-37, 60))
-                .point(new Vector2D(-40, 30))
+                .point(new Vector2D(-40, -30))
+                .point(new Vector2D(-37, -60))
+                .point(new Vector2D(-40, -30))
                 .headingConstant(0)
-                .point(new Vector2D(-68,15))
+                .point(new Vector2D(68,-15))
                 .action(() -> {
                     telemetry.addLine("Firing...");
                     telemetry.update();
@@ -42,7 +42,7 @@ public class BasicPathBlueNeg extends LinearOpMode {
                 })
                 .pause(() -> e.seconds() >= 1.5)
                 .headingFollow()
-                .point(new Vector2D(-55, 30))
+                .point(new Vector2D(-55, -30))
                 .build();
 
         telemetry.addLine("Ready...");
@@ -50,7 +50,7 @@ public class BasicPathBlueNeg extends LinearOpMode {
 
         waitForStart();
 
-        d.odometry.setPosition(-68,15,0, DistanceUnit.INCH, AngleUnit.DEGREES);
+        d.odometry.setPosition(-68,-15,0, DistanceUnit.INCH, AngleUnit.DEGREES);
         p.run(telemetry);
         d.runMotors(new double[4]);
 
