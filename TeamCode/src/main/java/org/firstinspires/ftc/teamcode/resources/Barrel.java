@@ -18,6 +18,10 @@ public class Barrel {
 
     double target = 0;
 
+    private final double degreesToTic = 90; //TODO: Check if correct
+
+    boolean emergency;
+
     public Barrel(OpMode op) {
         servo = op.hardwareMap.get(CRServo.class, "indexer");
         enc = op.hardwareMap.get(AnalogSensor.class, "indexerEnc");
@@ -36,24 +40,34 @@ public class Barrel {
         );
     }
 
-    public double getAngle () {
+    public double getAngle() {
         double currVol = enc.readRawVoltage();
 
-        rotsDone += (servo.getPower() > 0)        ?
-                    (currVol < lastVolt) ?  1 : 0 :
-                    (currVol > lastVolt) ? -1 : 0 ;
+        rotsDone += (servo.getPower() > 0) ?
+                (currVol < lastVolt) ? 1 : 0 :
+                (currVol > lastVolt) ? -1 : 0;
 
         lastVolt = currVol;
 
         return ((enc.readRawVoltage() / 3.3) + rotsDone) * 360;
     }
 
-    public void setTargetPos (double target) {
+    public void setTargetPos(double target) {
         this.target = target;
         pid.pidCalc(target);
     }
 
-    public void update (Gamepad gamepad) {
+    public void update(Gamepad gamepad) {
+        if (!emergency) {
+            setTargetPos(target + ((gamepad.dpad_right) ?
+                    degreesToTic : (gamepad.dpad_left) ? -degreesToTic : 0));
 
+            if (gamepad.left_stick_button && gamepad.right_stick_button) {
+                servo.setPower(0);
+                emergency = true;
+            }
+        } else {
+            servo.setPower(gamepad.right_stick_x); //TODO: FIND WHAT CONTROL THIS SHOULD REALLY BE
+        }
     }
 }
