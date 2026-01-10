@@ -14,4 +14,7 @@ public class SwyftWheels {
     public void WheelSpin(Gamepad gamepad2, Telemetry telemetry) {
         sWheel.setPower((gamepad2.y ? 1 : 0) - (gamepad2.x ? 1 : 0));
     }
+    public void autoSpin(double power){
+        sWheel.setPower(power);
+    }
 }
