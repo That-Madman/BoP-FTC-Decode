@@ -3,14 +3,39 @@ package org.firstinspires.ftc.teamcode.teleops;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.resources.Barrel;
+import org.firstinspires.ftc.teamcode.resources.FlywheelSystem;
+import org.firstinspires.ftc.teamcode.resources.HorizontalAim;
+import org.firstinspires.ftc.teamcode.resources.SwyftWheels;
+import org.firstinspires.ftc.teamcode.resources.VertAim;
+import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
+
 @TeleOp(name = "DRIVE TEAM, CHOOSE THIS ONE")
 public class Tele extends OpMode {
+    Barrel b;
+    Drive d;
+    FlywheelSystem f;
+    HorizontalAim h;
+    SwyftWheels s;
+    VertAim v;
 
     @Override
     public void init() {
+        b = new Barrel(this);
+        d = new Drive(hardwareMap);
+        f = new FlywheelSystem(hardwareMap);
+        h = new HorizontalAim(hardwareMap);
+        s = new SwyftWheels(hardwareMap);
+        v = new VertAim(hardwareMap);
     }
 
     @Override
     public void loop() {
+        b.update(gamepad2);
+        d.mecanumDrive(gamepad1);
+        f.update(gamepad1, telemetry);
+        h.rotate(gamepad1);
+        s.update(gamepad2);
+        v.update(gamepad2);
     }
 }

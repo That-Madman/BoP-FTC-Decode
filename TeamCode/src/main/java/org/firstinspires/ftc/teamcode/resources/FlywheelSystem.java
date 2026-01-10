@@ -19,10 +19,15 @@ public class FlywheelSystem {
         fly2 = hardwareMap.get(DcMotorEx.class, "fly motor2");
         fly2.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
     }
-    public void flyShoot(Gamepad gamepad1, Telemetry telemetry){
-         if(gamepad1.x){
-             fly1.setVelocity(3000);
-             fly2.setVelocity(3000);
+
+    public void flyRun (int velo) {
+        fly1.setVelocity(velo);
+        fly2.setVelocity(velo);
+    }
+
+    public void update(Gamepad gamepad, Telemetry telemetry){
+         if(gamepad.x){
+             flyRun(3000);
              telemetry.addData("encoder output 1", fly1.getVelocity());
              telemetry.addData("encoder output 2", fly2.getVelocity());
              telemetry.addLine("firing artifact(s)");

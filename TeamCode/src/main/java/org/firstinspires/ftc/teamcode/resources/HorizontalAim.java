@@ -7,6 +7,8 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+
 public class HorizontalAim {
     DcMotorEx aim;
 
@@ -14,8 +16,8 @@ public class HorizontalAim {
 
     private final int co = 100;
 
-    public HorizontalAim(OpMode op){
-        aim = op.hardwareMap.get(DcMotorEx.class,"aimH");
+    public HorizontalAim(HardwareMap hardwareMap){
+        aim = hardwareMap.get(DcMotorEx.class,"aimH");
         aim.setTargetPosition(0);
         aim.setPower(1);
         aim.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
