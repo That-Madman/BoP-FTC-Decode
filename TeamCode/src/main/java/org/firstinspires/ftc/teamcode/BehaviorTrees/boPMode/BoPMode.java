@@ -30,6 +30,8 @@ abstract public class BoPMode extends LinearOpMode {
         waitForStart();
 
         main();
+
+        while (opModeIsActive() && !isStopRequested());
     }
 
     public abstract void locInit();
