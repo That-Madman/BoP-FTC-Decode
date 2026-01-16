@@ -14,19 +14,19 @@ import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
  */
 public class BoPModeHWSuite { //TODO: KEEP UPDATED
     public Drive drive;
-    public FlywheelSystem flyWheel;
-    public SwyftWheels sCage;
+//    public FlywheelSystem flyWheel;
+//    public SwyftWheels sCage;
 
     //TODO: RE-ENGAGE WHEN DONE
 //    Barrel bar;
 
     public BoPModeHWSuite (HardwareMap hwMap){
-        for (LynxModule mod : hwMap.getAll(LynxModule.class))
-            mod.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
+//        for (LynxModule mod : hwMap.getAll(LynxModule.class))
+//            mod.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
 
         drive = new Drive(hwMap);
-        flyWheel = new FlywheelSystem(hwMap);
-        sCage = new SwyftWheels(hwMap);
+//        flyWheel = new FlywheelSystem(hwMap);
+//        sCage = new SwyftWheels(hwMap);
 //        bar = new Barrel(hwMap);
     }
 }

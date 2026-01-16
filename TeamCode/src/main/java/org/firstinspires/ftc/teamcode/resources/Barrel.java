@@ -3,71 +3,29 @@ package org.firstinspires.ftc.teamcode.resources;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.AnalogSensor;
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.fotmrobotics.trailblazer.PIDF;
 
 public class Barrel {
-    CRServo servo;
-    AnalogSensor enc;
+    DcMotorEx indexer;
 
-    PIDF pid;
+    private final double res = 537.7;
 
-    int rotsDone = 0;
-    double lastVolt = 0;
-
-    double target = 0;
-
-    private final double degreesToTic = 90; //TODO: Check if correct
-
-    boolean emergency;
-
-    public Barrel(OpMode op) {
-        servo = op.hardwareMap.get(CRServo.class, "indexer");
-        enc = op.hardwareMap.get(AnalogSensor.class, "indexerEnc");
-
-        pid = new PIDF(
-                0.1,
-                0.0,
-                0.0,
-                0.0,
-                this::getAngle,
-                (Number target) -> {
-                    servo.setPower(target.doubleValue());
-                    return null;
-                },
-                op::getRuntime
-        );
+    public Barrel (HardwareMap hardwareMap) {
+        indexer = hardwareMap.get(DcMotorEx.class, "indexer");
+        indexer.setPower(1);
+        indexer.setTargetPosition(0);
+        indexer.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
-    public double getAngle() {
-        double currVol = enc.readRawVoltage();
-
-        rotsDone += (servo.getPower() > 0) ?
-                (currVol < lastVolt) ? 1 : 0 :
-                (currVol > lastVolt) ? -1 : 0;
-
-        lastVolt = currVol;
-
-        return ((enc.readRawVoltage() / 3.3) + rotsDone) * 360;
-    }
-
-    public void setTargetPos(double target) {
-        this.target = target;
-        pid.pidCalc(target);
-    }
-
-    public void update(Gamepad gamepad) {
-        if (!emergency) {
-            setTargetPos(target + ((gamepad.dpad_right) ?
-                    degreesToTic : (gamepad.dpad_left) ? -degreesToTic : 0));
-
-            if (gamepad.left_stick_button && gamepad.right_stick_button) {
-                servo.setPower(0);
-                emergency = true;
-            }
-        } else {
-            servo.setPower((gamepad.dpad_up ? 1 : 0) - (gamepad.dpad_down ? 1 : 0));
-        }
+    public void update (Gamepad gamepad) {
+        indexer.setTargetPosition(indexer.getTargetPosition() +
+                (int) ((res / 4) *
+                        ((gamepad.dpadRightWasPressed() ? 1 : 0) -
+                                (gamepad.dpadLeftWasPressed() ? 1 : 0))));
     }
 }

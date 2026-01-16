@@ -9,29 +9,24 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class FlywheelSystem {
 
-    private final DcMotorEx fly1;
-    private final DcMotorEx fly2;
+    private final DcMotorEx fly;
 
 
     public FlywheelSystem(HardwareMap hardwareMap){
-        fly1 = hardwareMap.get(DcMotorEx.class, "fly motor1");
-        fly1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        fly2 = hardwareMap.get(DcMotorEx.class, "fly motor2");
-        fly2.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        fly = hardwareMap.get(DcMotorEx.class, "fly motor");
+        fly.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void flyRun (int velo) {
-        fly1.setVelocity(velo);
-        fly2.setVelocity(velo);
+        fly.setVelocity(velo);
     }
 
     public void update(Gamepad gamepad, Telemetry telemetry){
          if(gamepad.x){
              flyRun(3000);
-             telemetry.addData("encoder output 1", fly1.getVelocity());
-             telemetry.addData("encoder output 2", fly2.getVelocity());
+             telemetry.addData("encoder output 1", fly.getVelocity());
              telemetry.addLine("firing artifact(s)");
          }
-         else fly1.setVelocity(0);
+         else fly.setVelocity(0);
     }
 }

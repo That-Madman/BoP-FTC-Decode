@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.resources.Barrel;
 import org.firstinspires.ftc.teamcode.resources.FlywheelSystem;
-import org.firstinspires.ftc.teamcode.resources.HorizontalAim;
 import org.firstinspires.ftc.teamcode.resources.SwyftWheels;
 import org.firstinspires.ftc.teamcode.resources.VertAim;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
@@ -15,16 +14,14 @@ public class Tele extends OpMode {
     Barrel b;
     Drive d;
     FlywheelSystem f;
-    HorizontalAim h;
     SwyftWheels s;
     VertAim v;
 
     @Override
     public void init() {
-        b = new Barrel(this);
+        b = new Barrel(hardwareMap);
         d = new Drive(hardwareMap);
         f = new FlywheelSystem(hardwareMap);
-        h = new HorizontalAim(hardwareMap);
         s = new SwyftWheels(hardwareMap);
         v = new VertAim(hardwareMap);
     }
@@ -34,7 +31,6 @@ public class Tele extends OpMode {
         b.update(gamepad2);
         d.mecanumDrive(gamepad1);
         f.update(gamepad1, telemetry);
-        h.rotate(gamepad1);
         s.update(gamepad2);
         v.update(gamepad2);
     }
