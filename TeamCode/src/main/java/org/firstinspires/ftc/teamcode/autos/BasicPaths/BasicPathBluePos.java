@@ -21,6 +21,8 @@ public class BasicPathBluePos extends LinearOpMode {
         e = new ElapsedTime();
 
         p = d.PathBuilder(new Vector2D(52,52))
+                .xScale(0.8)
+                .yScale(0.8)
                 .headingConstant(45)
                 .point(new Vector2D(24,24))
                 .action(() -> {
@@ -45,7 +47,7 @@ public class BasicPathBluePos extends LinearOpMode {
                 .point(new Vector2D(-8.6,25.6))
                 .point(new Vector2D(-12.6,56))
                 .point(new Vector2D(-8.6,25.6))
-                .headingConstant(-45)
+                .headingConstant(45)
                 .point(new Vector2D(24,24))
                 .action(() -> {
                     telemetry.addLine("Shooting...");
@@ -62,7 +64,8 @@ public class BasicPathBluePos extends LinearOpMode {
         waitForStart();
 
         d.odometry.setPosition(52,52,45, DistanceUnit.INCH, AngleUnit.DEGREES);
-        p.run(telemetry);
+//        p.run(telemetry);
+        while (!p.runAsync(telemetry));
         d.runMotors(new double[4]);
 
         while(opModeIsActive() && !isStopRequested()){

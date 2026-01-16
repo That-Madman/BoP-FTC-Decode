@@ -322,9 +322,6 @@ public class Path {
      * Runs the path asynchronously.
      */
     public boolean runAsync() {
-        // Sets path state to continue.
-        pathState = State.CONTINUE;
-
         // Creates a copy of the event list.
         if (null == asyncParallelQueue) {
             asyncTempEvents = new ArrayList<>(events);
@@ -332,6 +329,9 @@ public class Path {
             // Event queues.
             asyncSequentialQueue = new ArrayList<>();
             asyncParallelQueue = new ArrayList<>();
+
+            // Sets path state to continue.
+            pathState = State.CONTINUE;
         }
 
             // Prevents force stop mode errors.
@@ -443,16 +443,16 @@ public class Path {
      * Runs the path asynchronously.
      */
     public boolean runAsync(Telemetry telemetry) {
-        // Sets path state to continue.
-        pathState = State.CONTINUE;
-
-        // Creates a copy of the event list.
+       // Creates a copy of the event list.
         if (null == asyncParallelQueue) {
             asyncTempEvents = new ArrayList<>(events);
 
             // Event queues.
             asyncSequentialQueue = new ArrayList<>();
             asyncParallelQueue = new ArrayList<>();
+
+            // Sets path state to continue.
+            pathState = State.CONTINUE;
         }
 
         // Prevents force stop mode errors.

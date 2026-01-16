@@ -67,7 +67,7 @@ public class Barrel {
                 emergency = true;
             }
         } else {
-            servo.setPower(gamepad.right_stick_x); //TODO: FIND WHAT CONTROL THIS SHOULD REALLY BE
+            servo.setPower((gamepad.dpad_up ? 1 : 0) - (gamepad.dpad_down ? 1 : 0));
         }
     }
 }

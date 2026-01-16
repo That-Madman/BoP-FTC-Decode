@@ -16,6 +16,6 @@ public class FlyWheelTest extends OpMode {
 
     @Override
     public void loop() {
-        f.flyShoot(gamepad1, telemetry);
+        f.update(gamepad1, telemetry);
     }
 }
