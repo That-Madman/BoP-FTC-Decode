@@ -18,6 +18,10 @@ public class CheckAndIndex extends BNode {
         opMode.telemetry.addLine("Intaking...");
         opMode.telemetry.update();
 
-        return intake.isFinished ? State.SUCCESS : State.FAILURE;
+        if (opMode.hwSuite.sCage.ballSense()) {
+            opMode.hwSuite.bar.incrTargetPosition();
+        }
+
+        return intake.isFinished ? State.SUCCESS : State.RUNNING;
     }
 }

@@ -22,6 +22,18 @@ public class Barrel {
         indexer.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
+    public void setTargetPosition(int tar) {
+        indexer.setTargetPosition(tar);
+    }
+
+    public void incrTargetPosition () {
+        indexer.setTargetPosition(indexer.getTargetPosition() + (int) (res /4));
+    }
+
+    public void decrTargetPosition () {
+        indexer.setTargetPosition(indexer.getTargetPosition() - (int) (res /4));
+    }
+
     public void update (Gamepad gamepad) {
         indexer.setTargetPosition(indexer.getTargetPosition() +
                 (int) ((res / 4) *

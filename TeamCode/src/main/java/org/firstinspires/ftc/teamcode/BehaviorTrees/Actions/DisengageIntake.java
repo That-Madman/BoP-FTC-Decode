@@ -8,8 +8,8 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 public class DisengageIntake extends BNode {
     @Override
     public State tick(DebugTree debug, BoPMode opMode) {
-        //TODO: IMPLEMENT
         opMode.telemetry.addLine("Disengaging Intake...");
+        opMode.hwSuite.sCage.spin(0);
         return State.SUCCESS;
     }
 }
