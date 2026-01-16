@@ -18,7 +18,7 @@ abstract public class BoPMode extends LinearOpMode {
 
     @Override
     public void runOpMode() {
-        hwSuite = new BoPModeHWSuite(hardwareMap);
+        hwSuite = new BoPModeHWSuite(this);
         timer = new ElapsedTime();
         debugTree = new DebugTree();
 

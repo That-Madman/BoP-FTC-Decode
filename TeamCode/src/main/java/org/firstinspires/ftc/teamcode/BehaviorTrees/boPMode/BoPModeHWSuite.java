@@ -1,7 +1,10 @@
 package org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode;
 
 
+import android.graphics.Path;
+
 import com.qualcomm.hardware.lynx.LynxModule;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.resources.Barrel;
@@ -20,13 +23,13 @@ public class BoPModeHWSuite { //TODO: KEEP UPDATED
 
     public Barrel bar;
 
-    public BoPModeHWSuite (HardwareMap hwMap){
-        for (LynxModule mod : hwMap.getAll(LynxModule.class))
+    public BoPModeHWSuite (OpMode o){
+        for (LynxModule mod : o.hardwareMap.getAll(LynxModule.class))
             mod.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
 
-        drive = new Drive(hwMap);
-        flyWheel = new FlywheelSystem(hwMap);
-        sCage = new SwyftWheels(hwMap);
-        bar = new Barrel(hwMap);
+        drive = new Drive(o.hardwareMap);
+        flyWheel = new FlywheelSystem(o);
+        sCage = new SwyftWheels(o.hardwareMap);
+        bar = new Barrel(o.hardwareMap);
     }
 }

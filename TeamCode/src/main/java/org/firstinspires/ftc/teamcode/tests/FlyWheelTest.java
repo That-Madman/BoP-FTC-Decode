@@ -11,7 +11,7 @@ public class FlyWheelTest extends OpMode {
 
     @Override
     public void init() {
-        f = new FlywheelSystem(hardwareMap);
+        f = new FlywheelSystem(this);
     }
 
     @Override

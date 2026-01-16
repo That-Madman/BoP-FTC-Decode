@@ -21,7 +21,7 @@ public class Tele extends OpMode {
     public void init() {
         b = new Barrel(hardwareMap);
         d = new Drive(hardwareMap);
-        f = new FlywheelSystem(hardwareMap);
+        f = new FlywheelSystem(this);
         s = new SwyftWheels(hardwareMap);
         v = new VertAim(hardwareMap);
     }
