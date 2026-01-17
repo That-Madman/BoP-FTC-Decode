@@ -4,12 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.fotmrobotics.trailblazer.PIDF;
-
-import kotlin.Unit;
 
 public class FlywheelSystem {
 
@@ -23,10 +20,7 @@ public class FlywheelSystem {
 
         pid = new PIDF(0.5, 0, 0, 0,
                 this::getVelo,
-                (Number p) -> {
-                    fly.setPower(p.doubleValue());
-                    return null;
-                },
+                null,
                 opMode::getRuntime
         );
     }
@@ -36,7 +30,7 @@ public class FlywheelSystem {
     }
 
     public void flyRun (int velo) {
-        pid.update(velo);
+        fly.setPower(pid.update(velo));
     }
 
     public void update(Gamepad gamepad, Telemetry telemetry){

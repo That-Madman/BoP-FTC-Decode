@@ -32,6 +32,6 @@ public class Tele extends OpMode {
         d.mecanumDrive(gamepad1);
         f.update(gamepad1, telemetry);
         s.update(gamepad2);
-        v.update(gamepad2);
+        v.update(gamepad2, telemetry);
     }
 }

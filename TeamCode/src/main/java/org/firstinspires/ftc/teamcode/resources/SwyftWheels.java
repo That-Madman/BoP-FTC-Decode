@@ -11,7 +11,7 @@ public class SwyftWheels {
     public SwyftWheels(HardwareMap hardwareMap) {
         sWheel = hardwareMap.get(DcMotor.class, "swyftWheels");
         sWheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        color = hardwareMap.get(ColorSensor.class,"colorSense");
+        color = null ; //hardwareMap.get(ColorSensor.class,"colorSense");
     }
 
     public void update (Gamepad gamepad2) {
