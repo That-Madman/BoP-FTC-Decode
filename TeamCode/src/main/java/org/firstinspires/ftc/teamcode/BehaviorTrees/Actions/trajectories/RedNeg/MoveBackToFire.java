@@ -11,7 +11,7 @@ public class MoveBackToFire extends BNode {
         if (null == org.firstinspires.ftc.teamcode.paths.RedNeg.MoveBackToFire.p)
             org.firstinspires.ftc.teamcode.paths.RedNeg.MoveBackToFire.factory(opMode.hwSuite.drive);
 
-        return (org.firstinspires.ftc.teamcode.paths.RedNeg.MoveBackToFire.p.runAsync()) ?
-                State.SUCCESS : State.RUNNING;
+        org.firstinspires.ftc.teamcode.paths.RedNeg.MoveBackToFire.p.runAsync();
+        return State.SUCCESS;
     }
 }

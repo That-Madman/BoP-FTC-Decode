@@ -13,11 +13,12 @@ public class MoveToIntake1 extends BMoveToIntakeNode {
         if (null ==  org.firstinspires.ftc.teamcode.paths.RedPos.MoveToIntake1.p)
             org.firstinspires.ftc.teamcode.paths.RedPos.MoveToIntake1.factory(opMode.hwSuite.drive);
 
-        if (org.firstinspires.ftc.teamcode.paths.RedPos.MoveToIntake1.p.runAsync()) {
+//        if (org.firstinspires.ftc.teamcode.paths.RedPos.MoveToIntake1.p.runAsync()) {
+        org.firstinspires.ftc.teamcode.paths.RedPos.MoveToIntake1.p.run();
             isFinished = true;
             return State.SUCCESS;
-        } else {
-            return State.RUNNING;
-        }
+//        } else {
+//            return State.RUNNING;
+//        }
     }
 }

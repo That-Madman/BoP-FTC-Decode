@@ -22,20 +22,32 @@ public class Barrel {
         indexer.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
+    public void engageFreeSpin() {
+        indexer.setPower(0);
+        indexer.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        indexer.setPower(1);
+    }
+
+    public void disengageFreeSpin () {
+        indexer.setPower(0);
+        indexer.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        indexer.setPower(1);
+    }
+
     public void setTargetPosition(int tar) {
         indexer.setTargetPosition(tar);
     }
 
     public void incrTargetPosition () {
-        indexer.setTargetPosition(indexer.getTargetPosition() + (int) (res /4));
+        setTargetPosition(indexer.getTargetPosition() + (int) (res /4));
     }
 
     public void decrTargetPosition () {
-        indexer.setTargetPosition(indexer.getTargetPosition() - (int) (res /4));
+        setTargetPosition(indexer.getTargetPosition() - (int) (res /4));
     }
 
     public void update (Gamepad gamepad) {
-        indexer.setTargetPosition(indexer.getTargetPosition() +
+       setTargetPosition(indexer.getTargetPosition() +
                 (int) ((res / 4) *
                         ((gamepad.dpadRightWasPressed() ? 1 : 0) -
                                 (gamepad.dpadLeftWasPressed() ? 1 : 0))));

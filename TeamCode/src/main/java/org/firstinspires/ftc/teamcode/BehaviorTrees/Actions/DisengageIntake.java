@@ -10,6 +10,7 @@ public class DisengageIntake extends BNode {
     public State tick(DebugTree debug, BoPMode opMode) {
         opMode.telemetry.addLine("Disengaging Intake...");
         opMode.hwSuite.sCage.spin(0);
+        opMode.hwSuite.bar.disengageFreeSpin();
         return State.SUCCESS;
     }
 }

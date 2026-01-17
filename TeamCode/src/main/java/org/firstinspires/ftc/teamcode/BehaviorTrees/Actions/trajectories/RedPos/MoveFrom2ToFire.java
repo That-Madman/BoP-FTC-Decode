@@ -11,7 +11,7 @@ public class MoveFrom2ToFire extends BNode {
         if (null == org.firstinspires.ftc.teamcode.paths.RedPos.MoveFrom2ToFire.p)
             org.firstinspires.ftc.teamcode.paths.RedPos.MoveFrom2ToFire.factory(opMode.hwSuite.drive);
 
-        return (org.firstinspires.ftc.teamcode.paths.RedPos.MoveFrom2ToFire.p.runAsync()) ?
-                State.SUCCESS : State.RUNNING;
+        org.firstinspires.ftc.teamcode.paths.RedPos.MoveFrom2ToFire.p.run();
+        return State.SUCCESS;
     }
 }

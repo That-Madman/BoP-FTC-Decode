@@ -11,7 +11,7 @@ public class MoveToPickup extends BNode {
         if (null == org.firstinspires.ftc.teamcode.paths.RedNeg.MoveToPickup.p)
             org.firstinspires.ftc.teamcode.paths.RedNeg.MoveToPickup.factory(opMode.hwSuite.drive);
 
-        return (org.firstinspires.ftc.teamcode.paths.RedNeg.MoveToPickup.p.runAsync()) ?
-                State.SUCCESS : State.RUNNING;
+        org.firstinspires.ftc.teamcode.paths.RedNeg.MoveToPickup.p.run();
+        return State.SUCCESS;
     }
 }

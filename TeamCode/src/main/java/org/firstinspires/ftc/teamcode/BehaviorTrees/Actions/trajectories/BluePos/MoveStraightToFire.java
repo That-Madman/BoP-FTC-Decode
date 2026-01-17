@@ -11,7 +11,7 @@ public class MoveStraightToFire extends BNode {
         if (null == org.firstinspires.ftc.teamcode.paths.BluePos.MoveStraightToFire.p)
             org.firstinspires.ftc.teamcode.paths.BluePos.MoveStraightToFire.factory(opMode.hwSuite.drive);
 
-        return (org.firstinspires.ftc.teamcode.paths.BluePos.MoveStraightToFire.p.runAsync()) ?
-                State.SUCCESS : State.RUNNING;
+        org.firstinspires.ftc.teamcode.paths.BluePos.MoveStraightToFire.p.run();
+        return State.SUCCESS;
     }
 }

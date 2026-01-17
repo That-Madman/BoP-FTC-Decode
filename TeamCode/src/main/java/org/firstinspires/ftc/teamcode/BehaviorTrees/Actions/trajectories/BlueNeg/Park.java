@@ -11,7 +11,7 @@ public class Park extends BNode {
         if (null == org.firstinspires.ftc.teamcode.paths.BlueNeg.Park.p)
             org.firstinspires.ftc.teamcode.paths.BlueNeg.Park.factory(opMode.hwSuite.drive);
 
-        return (org.firstinspires.ftc.teamcode.paths.BlueNeg.Park.p.runAsync()) ?
-                State.SUCCESS : State.RUNNING;
+        org.firstinspires.ftc.teamcode.paths.BlueNeg.Park.p.run();
+        return State.SUCCESS;
     }
 }
