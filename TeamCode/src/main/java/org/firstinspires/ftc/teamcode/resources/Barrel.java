@@ -15,6 +15,8 @@ public class Barrel {
 
     private final double res = 537.7;
 
+    private boolean emergency = false;
+
     public Barrel (HardwareMap hardwareMap) {
         indexer = hardwareMap.get(DcMotorEx.class, "indexer");
         indexer.setPower(1);
@@ -47,9 +49,18 @@ public class Barrel {
     }
 
     public void update (Gamepad gamepad) {
-       setTargetPosition(indexer.getTargetPosition() +
-                (int) ((res / 4) *
-                        ((gamepad.dpadRightWasPressed() ? 1 : 0) -
-                                (gamepad.dpadLeftWasPressed() ? 1 : 0))));
+       if (!emergency) {
+           if (gamepad.dpadRightWasPressed()) incrTargetPosition();
+           if (gamepad.dpadLeftWasPressed()) decrTargetPosition();
+
+           if (gamepad.dpad_down) {
+               emergency = true;
+
+               indexer.setPower(0);
+               indexer.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+           }
+       } else {
+           indexer.setPower(gamepad.dpad_right ? 1 : gamepad.dpad_left ? -1 : 0);
+       }
     }
 }
