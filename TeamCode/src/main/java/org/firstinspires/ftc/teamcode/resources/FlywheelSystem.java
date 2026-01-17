@@ -36,7 +36,7 @@ public class FlywheelSystem {
     }
 
     public void flyRun (int velo) {
-        fly.setVelocity(velo);
+        pid.update(velo);
     }
 
     public void update(Gamepad gamepad, Telemetry telemetry){

@@ -11,8 +11,11 @@ public class FireAllInBarrel extends BNode {
         opMode.telemetry.addLine("Shooting...");
 
         for (int i = 0; i < 4; i++) {
-            opMode.hwSuite.flyWheel.flyRun(3000);
-            opMode.sleep(125);
+            opMode.resetRuntime();
+            while (opMode.getRuntime() < 125) {
+                opMode.hwSuite.flyWheel.flyRun(3000);
+            }
+
             opMode.hwSuite.flyWheel.flyRun(0);
 
             opMode.hwSuite.bar.incrTargetPosition();
