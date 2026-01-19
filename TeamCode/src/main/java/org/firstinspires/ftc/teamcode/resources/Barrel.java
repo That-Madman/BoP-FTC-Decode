@@ -19,7 +19,7 @@ public class Barrel {
 
     public Barrel (HardwareMap hardwareMap) {
         indexer = hardwareMap.get(DcMotorEx.class, "indexer");
-        indexer.setPower(1);
+        indexer.setPower(.8);
         indexer.setTargetPosition(0);
         indexer.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
@@ -41,11 +41,11 @@ public class Barrel {
     }
 
     public void incrTargetPosition () {
-        setTargetPosition(indexer.getTargetPosition() + (int) (res /4));
+        setTargetPosition(indexer.getTargetPosition() + (int) (res / 4));
     }
 
     public void decrTargetPosition () {
-        setTargetPosition(indexer.getTargetPosition() - (int) (res /4));
+        setTargetPosition(indexer.getTargetPosition() - (int) (res / 4));
     }
 
     public void update (Gamepad gamepad) {
@@ -53,14 +53,23 @@ public class Barrel {
            if (gamepad.dpadRightWasPressed()) incrTargetPosition();
            if (gamepad.dpadLeftWasPressed()) decrTargetPosition();
 
-           if (gamepad.dpad_down) {
+           if (gamepad.dpadDownWasPressed()) {
                emergency = true;
 
                indexer.setPower(0);
                indexer.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
            }
        } else {
-           indexer.setPower(gamepad.dpad_right ? 1 : gamepad.dpad_left ? -1 : 0);
+           indexer.setPower(gamepad.dpad_right ? .8 : gamepad.dpad_left ? -.8 : 0);
+
+           if (gamepad.dpadDownWasPressed()) {
+               emergency = false;
+
+               indexer.setPower(0);
+               indexer.setTargetPosition(0);
+               indexer.setPower(.8);
+               indexer.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+           }
        }
     }
 }

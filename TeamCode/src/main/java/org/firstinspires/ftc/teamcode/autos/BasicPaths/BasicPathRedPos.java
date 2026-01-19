@@ -30,7 +30,7 @@ public class BasicPathRedPos extends LinearOpMode {
                 .pause(()-> e.seconds() >= 1.5)
                 .headingConstant(-90)
                 .point(new Vector2D(12,-30))
-                .point(new Vector2D(11.4,-56))
+                .point(new Vector2D(11.4,-54))
                 .point(new Vector2D(12,-30))
                 .headingConstant(-45)
                 .point(new Vector2D(24,-24))
