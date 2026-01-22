@@ -53,7 +53,7 @@ public class Barrel {
            if (gamepad.dpadRightWasPressed()) incrTargetPosition();
            if (gamepad.dpadLeftWasPressed()) decrTargetPosition();
 
-           if (gamepad.dpadDownWasPressed()) {
+           if (gamepad.aWasPressed()) {
                emergency = true;
 
                indexer.setPower(0);
@@ -62,7 +62,7 @@ public class Barrel {
        } else {
            indexer.setPower(gamepad.dpad_right ? .8 : gamepad.dpad_left ? -.8 : 0);
 
-           if (gamepad.dpadDownWasPressed()) {
+           if (gamepad.aWasPressed()) {
                emergency = false;
 
                indexer.setPower(0);

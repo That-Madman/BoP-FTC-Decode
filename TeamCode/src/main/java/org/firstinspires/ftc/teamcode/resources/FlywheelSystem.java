@@ -38,10 +38,10 @@ public class FlywheelSystem {
 
     public void update(Gamepad gamepad, Telemetry telemetry){
          if(gamepad.x){
-             flyRun(3000);
+             flyRun(2600);
              telemetry.addData("firing", true);
          } else if (gamepad.y) {
-             fly.setVelocity(6000);
+             fly.setVelocity(1300);
              telemetry.addData("firing", true);
          } else {
              flyRun(0);
