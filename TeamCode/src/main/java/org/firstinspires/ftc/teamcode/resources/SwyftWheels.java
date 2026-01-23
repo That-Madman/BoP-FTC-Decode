@@ -2,16 +2,18 @@ package org.firstinspires.ftc.teamcode.resources;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class SwyftWheels {
     private final DcMotor sWheel;
-    private final ColorSensor color;
+    private final DigitalChannel beamBreak;
+
     public SwyftWheels(HardwareMap hardwareMap) {
         sWheel = hardwareMap.get(DcMotor.class, "swyftWheels");
         sWheel.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        color = null ; //hardwareMap.get(ColorSensor.class,"colorSense");
+        beamBreak = hardwareMap.get(DigitalChannel.class, "beamBreak");
     }
 
     public void update (Gamepad gamepad2) {
@@ -21,7 +23,6 @@ public class SwyftWheels {
         sWheel.setPower(power);
     }
     public boolean ballSense (){
-         return (color.blue() >= 170 && color.blue() <= 210) ||
-        (color.green() >= 160 && color.green() <= 200);
+        return !beamBreak.getState();
     }
 }
