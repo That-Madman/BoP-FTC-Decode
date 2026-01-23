@@ -10,17 +10,15 @@ public class FireAllInBarrel extends BNode {
     public State tick(DebugTree debug, BoPMode opMode) {
         opMode.telemetry.addLine("Shooting...");
 
+        opMode.hwSuite.flyWheel.flyRun(1650);
+        opMode.sleep(1000);
+
         for (int i = 0; i < 4; i++) {
-            opMode.resetRuntime();
-            while (opMode.getRuntime() < 125) {
-                opMode.hwSuite.flyWheel.flyRun(3000);
-            }
-
-            opMode.hwSuite.flyWheel.flyRun(0);
-
             opMode.hwSuite.bar.incrTargetPosition();
-            opMode.sleep(125);
+            opMode.sleep(250);
         }
+
+        opMode.hwSuite.flyWheel.flyRun(0);
 
         return State.SUCCESS;
     }

@@ -9,9 +9,9 @@ public class MoveToPickup1 extends BNode {
     @Override
     public State tick(DebugTree debug, BoPMode opMode) {
         if (null == org.firstinspires.ftc.teamcode.paths.RedPos.MoveToPickup1.p)
-            org.firstinspires.ftc.teamcode.paths.RedPos.MoveToPickup1.factory(opMode.hwSuite.drive);
+            org.firstinspires.ftc.teamcode.paths.BluePos.MoveToPickup1.factory(opMode.hwSuite.drive);
 
-        org.firstinspires.ftc.teamcode.paths.RedPos.MoveToPickup1.p.run();
+        org.firstinspires.ftc.teamcode.paths.BluePos.MoveToPickup1.p.run();
         return State.SUCCESS;
     }
 }

@@ -19,6 +19,7 @@ public class Barrel {
 
     public Barrel (HardwareMap hardwareMap) {
         indexer = hardwareMap.get(DcMotorEx.class, "indexer");
+        indexer.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         indexer.setPower(.8);
         indexer.setTargetPosition(0);
         indexer.setMode(DcMotor.RunMode.RUN_TO_POSITION);

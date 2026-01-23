@@ -43,9 +43,12 @@ public class FlywheelSystem {
          } else if (gamepad.y) {
              fly.setVelocity(1950);
              telemetry.addData("firing", true);
+         } else if (gamepad.b){
+             fly.setVelocity(1650);
+             telemetry.addData("firing", true);
          } else {
              flyRun(0);
-             telemetry.addData("firing", true);
+             telemetry.addData("not firing", false);
          }
 
         telemetry.addData("encoder output (velo)", fly.getVelocity());
