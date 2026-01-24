@@ -33,5 +33,7 @@ public class Tele extends OpMode {
         f.update(gamepad1, telemetry);
         s.update(gamepad2);
         v.update(gamepad2, telemetry);
+        telemetry.addData("Ball", s.ballSense());
+
     }
 }

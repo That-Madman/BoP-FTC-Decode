@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.resources;
 
-import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.Gamepad;
@@ -23,6 +22,6 @@ public class SwyftWheels {
         sWheel.setPower(power);
     }
     public boolean ballSense (){
-        return !beamBreak.getState();
+        return !beamBreak.getState() && sWheel.getPower() < 0;
     }
 }
