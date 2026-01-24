@@ -6,7 +6,6 @@ import com.ftcteams.behaviortrees.Parallel;
 import com.ftcteams.behaviortrees.Sequence;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.CheckAndIndex;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.Delay;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.FireAllInBarrel;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.RevUpIntake;

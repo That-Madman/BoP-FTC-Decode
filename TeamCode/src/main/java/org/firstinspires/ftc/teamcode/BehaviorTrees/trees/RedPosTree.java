@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.BehaviorTrees.trees;
 import com.ftcteams.behaviortrees.Failover;
 import com.ftcteams.behaviortrees.Node;
 import com.ftcteams.behaviortrees.Sequence;
-import com.ftcteams.behaviortrees.Parallel;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.Delay;
@@ -19,7 +18,6 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.FireAllInBarrel;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveToIntake1;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveToPickup1;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.RevUpIntake;
-import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.CheckAndIndex;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.DisengageIntake;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.RedPos.MoveFrom1ToFire;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
@@ -53,9 +51,7 @@ public class RedPosTree {
                         new FireAllInBarrel(),
                         new MoveToPickup1(),
                         new RevUpIntake(),
-//                        new Parallel(2,
                                 m1,
-//                                new CheckAndIndex(m1)),
                         new DisengageIntake(),
                         new MoveFrom1ToFire(),
                         new FireAllInBarrel(),
