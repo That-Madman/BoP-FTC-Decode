@@ -41,8 +41,8 @@ public class DriveValues {
     };
 
     // TODO: Tune the PIDF loops.
-    static final PIDF positionPID = new PIDF(0.06, 0,0.05,0);
-    static final PIDF headingPID = new PIDF(0.01, 0,0,0);
+    public static final PIDF positionPID = new PIDF(0.059, 0.001,0.051,0);
+    public static final PIDF headingPID = new PIDF(0.01, 0,0,0);
 
     // TODO: Change if necessary.
     // Position of the GoBildaPinpointDriver relative to the center.

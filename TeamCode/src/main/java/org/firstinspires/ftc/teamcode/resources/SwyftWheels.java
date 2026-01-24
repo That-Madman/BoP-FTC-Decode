@@ -21,6 +21,7 @@ public class SwyftWheels {
     public void spin(double power){
         sWheel.setPower(power);
     }
+
     public boolean ballSense (){
         return !beamBreak.getState() && sWheel.getPower() < 0;
     }
