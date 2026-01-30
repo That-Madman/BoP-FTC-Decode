@@ -10,7 +10,6 @@ public class RevUpIntake extends BNode {
     public State tick(DebugTree debug, BoPMode opMode) {
         opMode.telemetry.addLine("Reving intake...");
         opMode.hwSuite.sCage.spin(1);
-        //opMode.hwSuite.bar.engageFreeSpin();
         return State.SUCCESS;
     }
 }

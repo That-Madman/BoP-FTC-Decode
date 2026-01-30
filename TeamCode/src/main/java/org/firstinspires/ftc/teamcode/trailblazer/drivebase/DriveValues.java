@@ -41,7 +41,7 @@ public class DriveValues {
     };
 
     // TODO: Tune the PIDF loops.
-    public static final PIDF positionPID = new PIDF(0.059, 0.001,0.051,0);
+    public static final PIDF positionPID = new PIDF(0.059, 0.0,0.05,0);
     public static final PIDF headingPID = new PIDF(0.01, 0,0,0);
 
     // TODO: Change if necessary.

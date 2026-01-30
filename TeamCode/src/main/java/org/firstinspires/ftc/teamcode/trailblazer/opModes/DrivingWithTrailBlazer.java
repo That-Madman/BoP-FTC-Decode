@@ -15,7 +15,7 @@ public class DrivingWithTrailBlazer extends OpMode {
 
     int i = 0;
 
-    double c = 0.001;
+    double c = 0.01;
 
     @Override
     public void init() {
@@ -32,6 +32,8 @@ public class DrivingWithTrailBlazer extends OpMode {
 
         if (gamepad1.b && bHeld) tN ^= true;
         bHeld = gamepad1.b;
+
+        c *= gamepad1.rightBumperWasPressed() ? 10 : gamepad1.leftBumperWasPressed() ? 0.1 : 1;
 
         i = (i + (gamepad1.dpadRightWasPressed() ? 1 : 0) - (gamepad1.dpadLeftWasPressed() ? 1 : 0)) % 3;
 
@@ -63,9 +65,12 @@ public class DrivingWithTrailBlazer extends OpMode {
                 );
                 break;
 
+            //Should never occur.
             default:
-                telemetry.addData("Updating", "None");
+                telemetry.addData("Updating", "ERROR");
         }
+
+        telemetry.addData("By a power of", c);
 
         telemetry.addData("KP", DriveValues.positionPID.getKP());
         telemetry.addData("KI", DriveValues.positionPID.getKI());

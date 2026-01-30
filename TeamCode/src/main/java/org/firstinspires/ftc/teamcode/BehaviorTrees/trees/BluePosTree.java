@@ -35,9 +35,6 @@ public class BluePosTree {
         org.firstinspires.ftc.teamcode.paths.BluePos.Park.factory(d);
     }
 
-   static MoveToIntake1 m1 = new MoveToIntake1();
-   static MoveToIntake2 m2 = new MoveToIntake2();
-
     public static Node root(){
         return new Failover(
                 new Sequence(
@@ -50,17 +47,13 @@ public class BluePosTree {
                         new FireAllInBarrel(),
                         new MoveToPickup1(),
                         new RevUpIntake(),
-//                        new Parallel(2,
-                                m1,
-//                                new CheckAndIndex(m1)),
+                        new MoveToIntake1(),
                         new DisengageIntake(),
                         new MoveFrom1ToFire(),
                         new FireAllInBarrel(),
                         new MoveToPickup2(),
                         new RevUpIntake(),
-//                        new Parallel(2,
-                                m2,
-//                                new CheckAndIndex(m2)),
+                        new MoveToIntake2(),
                         new MoveFrom2ToFire(),
                         new DisengageIntake(),
                         new Park()),
