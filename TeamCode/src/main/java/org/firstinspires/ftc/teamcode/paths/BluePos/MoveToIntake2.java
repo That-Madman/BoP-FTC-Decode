@@ -10,7 +10,7 @@ public class MoveToIntake2 {
     public static void factory (Drive d) {
         p = d.PathBuilder(new Vector2D(-8.6, 25.6))
                 .headingConstant(90)
-                .point(new Vector2D(-12.6,56))
+                .point(new Vector2D(-12.6,50))
                 .build();
     }
 }

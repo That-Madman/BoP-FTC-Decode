@@ -9,8 +9,12 @@ public class MoveToPickup2 {
 
     public static void factory (Drive d) {
         p = d.PathBuilder(new Vector2D (24, 24))
+                .xScale(0.5)
+                .yScale(0.5)
                 .headingConstant(90)
                 .point(new Vector2D(-8.6, 25.6))
+                .xScale(1)
+                .yScale(1)
                 .build();
     }
 }
