@@ -39,12 +39,6 @@ public class BlueNegTree {
                                         new IsOdomCorrectBlueNeg())),
                         new FireAllInBarrel(),
                         new MoveToPickup(),
-                        new RevUpIntake(),
-                        //new Parallel(2,
-                                m,
-                                //new CheckAndIndex(m)),
-                        new MoveBackToFire(),
-                        new FireAllInBarrel(),
                         new Park()),
                 new EmergencyPark());
     }

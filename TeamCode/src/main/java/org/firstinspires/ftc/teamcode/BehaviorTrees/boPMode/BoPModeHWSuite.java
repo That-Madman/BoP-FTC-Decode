@@ -10,6 +10,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.teamcode.resources.Barrel;
 import org.firstinspires.ftc.teamcode.resources.FlywheelSystem;
 import org.firstinspires.ftc.teamcode.resources.SwyftWheels;
+import org.firstinspires.ftc.teamcode.resources.VertAim;
 import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
 
 /**
@@ -20,8 +21,8 @@ public class BoPModeHWSuite { //TODO: KEEP UPDATED
     public Drive drive;
     public FlywheelSystem flyWheel;
     public SwyftWheels sCage;
-
     public Barrel bar;
+    public VertAim vert;
 
     public BoPModeHWSuite (OpMode o){
         for (LynxModule mod : o.hardwareMap.getAll(LynxModule.class))
@@ -31,5 +32,6 @@ public class BoPModeHWSuite { //TODO: KEEP UPDATED
         flyWheel = new FlywheelSystem(o);
         sCage = new SwyftWheels(o.hardwareMap);
         bar = new Barrel(o.hardwareMap);
+        vert = new VertAim(o.hardwareMap);
     }
 }

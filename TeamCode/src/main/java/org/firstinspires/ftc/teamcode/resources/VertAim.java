@@ -20,4 +20,8 @@ public class VertAim {
                 + ((gamepad.left_bumper) ? co : (gamepad.right_bumper) ? -co : 0));
         t.addData("Aim Position", servo.getPosition());
     }
+
+    public void setPos (double pos) {
+        servo.setPosition(pos);
+    }
 }

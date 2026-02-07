@@ -1,5 +1,16 @@
 package org.firstinspires.ftc.teamcode.autos;
 
-public class RedPosBasic {
+import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.trees.basics.RedPosBasicTree;
 
+public class RedPosBasic extends BoPMode {
+    @Override
+    public void locInit() {
+        RedPosBasicTree.factory(hwSuite.drive);
+    }
+
+    @Override
+    public void main() {
+        RedPosBasicTree.root().tick(debugTree, this);
+    }
 }
