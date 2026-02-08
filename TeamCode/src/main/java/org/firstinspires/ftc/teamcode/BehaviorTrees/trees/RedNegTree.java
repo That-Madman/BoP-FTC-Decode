@@ -23,6 +23,7 @@ public class RedNegTree {
        org.firstinspires.ftc.teamcode.paths.RedNeg.Park.factory(d);
 
        org.firstinspires.ftc.teamcode.paths.RedNeg.MoveToIntake.factory(d);
+       org.firstinspires.ftc.teamcode.paths.RedNeg.MoveToFire.factory(d);
    }
 
     public static Node root() {

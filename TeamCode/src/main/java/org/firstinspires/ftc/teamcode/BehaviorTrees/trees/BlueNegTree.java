@@ -12,6 +12,7 @@ import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.RevUpIntake;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.initializeOdom.InitializeOdomBlueNeg;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.BlueNeg.EmergencyPark;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.BlueNeg.MoveBackToFire;
+import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.BlueNeg.MoveToFire;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.BlueNeg.MoveToIntake;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.BlueNeg.MoveToPickup;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.Actions.trajectories.BlueNeg.Park;
@@ -25,6 +26,8 @@ public class BlueNegTree {
         org.firstinspires.ftc.teamcode.paths.BlueNeg.MoveToIntake.factory(d);
         org.firstinspires.ftc.teamcode.paths.BlueNeg.MoveBackToFire.factory(d);
         org.firstinspires.ftc.teamcode.paths.BlueNeg.Park.factory(d);
+
+        org.firstinspires.ftc.teamcode.paths.BlueNeg.MoveToFire.factory(d);
     }
 
     static MoveToIntake m = new MoveToIntake();
@@ -37,8 +40,8 @@ public class BlueNegTree {
                                 new Sequence(
                                         new Delay(1, new ElapsedTime()),
                                         new IsOdomCorrectBlueNeg())),
+                        new MoveToFire(),
                         new FireAllInBarrel(),
-                        new MoveToPickup(),
                         new Park()),
                 new EmergencyPark());
     }
