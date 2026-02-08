@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.trees.basics.RedPosBasicTree;
 
-@Autonomous
+@Autonomous (name = "RED SIDE NEAR BIG TRIANGLE")
 public class RedPosBasic extends BoPMode {
     @Override
     public void locInit() {

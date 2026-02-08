@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.trees.BlueNegTree;
 
-@Autonomous
+@Autonomous (name = "BLUE SIDE NEAR SMALL TRIANGLE")
 public class BlueNeg extends BoPMode {
 
     @Override
