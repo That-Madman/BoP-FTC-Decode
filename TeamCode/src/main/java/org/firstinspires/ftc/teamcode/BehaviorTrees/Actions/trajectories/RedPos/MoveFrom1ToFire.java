@@ -4,7 +4,6 @@ import com.ftcteams.behaviortrees.DebugTree;
 
 import org.firstinspires.ftc.teamcode.BehaviorTrees.BNode;
 import org.firstinspires.ftc.teamcode.BehaviorTrees.boPMode.BoPMode;
-import org.firstinspires.ftc.teamcode.paths.RedPos.MoveToPickup1;
 
 public class MoveFrom1ToFire extends BNode {
     @Override
