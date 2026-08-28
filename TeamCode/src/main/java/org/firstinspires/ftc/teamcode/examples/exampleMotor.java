@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 
-@TeleOp(name = "Training Time")
+@TeleOp(name = "Training Time take 2")
 public class exampleMotor extends OpMode {
     DcMotor fLeft;
     DcMotor fRight;
