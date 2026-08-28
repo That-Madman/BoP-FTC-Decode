@@ -16,8 +16,8 @@ abstract public class BoPMode extends LinearOpMode {
     public ElapsedTime timer;
     public DebugTree debugTree;
 
-    @Override
-    public void runOpMode() {
+   /* @Override
+ /*   public void runOpMode() {
         hwSuite = new BoPModeHWSuite(this);
         timer = new ElapsedTime();
         debugTree = new DebugTree();
@@ -37,4 +37,6 @@ abstract public class BoPMode extends LinearOpMode {
     public abstract void locInit();
 
     public abstract void main();
+}
+*/
 }

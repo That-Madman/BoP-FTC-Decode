@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.trailblazer.drivebase.Drive;
  * It should be updated whenever a new subsystem is added.
  */
 public class BoPModeHWSuite { //TODO: KEEP UPDATED
-    public Drive drive;
+   /** public Drive drive;
     public FlywheelSystem flyWheel;
     public SwyftWheels sCage;
     public Barrel bar;
@@ -28,4 +28,6 @@ public class BoPModeHWSuite { //TODO: KEEP UPDATED
         bar = new Barrel(o.hardwareMap);
         vert = new VertAim(o.hardwareMap);
     }
+}
+*/
 }
