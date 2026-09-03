@@ -38,5 +38,7 @@ public class exampleMotor extends OpMode {
         fLeft.setPower(y+x+r);
         bLeft.setPower(y-x+r);
         bRight.setPower(y+x-r);
+        telemetry.addLine("guh");
+
     }
 }
